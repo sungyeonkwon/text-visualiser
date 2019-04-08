@@ -21,7 +21,9 @@ class Unit extends Component {
 
   onWindowResize = e => {
     const containerMargin = 0;
-    this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2) - containerMargin});
+    if (this.UnitRef.current){
+      this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2) - containerMargin});
+    }
   };
 
   callbackOnChange = text => {
@@ -32,13 +34,27 @@ class Unit extends Component {
     this.setState({ showControl: !this.state.showControl })
   }
 
+  onClickAddUnit = () => {
+    this.props.callbackOnAddUnit(this.props.unitKey)
+  }
+
+  onClickRemoveUnit = () => {
+    this.props.callbackOnRemoveUnit(this.props.unitKey)
+  }
+
   render(){
-    // console.log(this.state.edge)
     return(
       <div className="Unit" ref={this.UnitRef}>
         <Textbox callbackOnClick={this.callbackOnClick} callbackOnChange={this.callbackOnChange}/>
         <Frame edge={this.state.edge} text={this.state.text}/>
-        <button className="round-btn add" />
+        <button 
+          className="add round-btn btn icon" 
+          onClick={this.onClickAddUnit}  
+        />
+        <button 
+          className="remove btn icon" 
+          onClick={this.onClickRemoveUnit} 
+        />
         { this.state.showControl? <Control /> : null }
       </div>
     )

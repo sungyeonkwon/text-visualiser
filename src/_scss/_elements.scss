@@ -33,6 +33,23 @@
   content: "";
 }
 
+.btn.ctrl {
+  background-image: url(../assets/i_ctrl.svg);
+}
+
+.btn.add {
+  background-image: url(../assets/i_add.svg);
+}
+
+.btn.remove {
+  position:absolute;
+  top:0;
+  right:0;
+  width:30px;
+  height:30px;
+  background-image: url(../assets/i_remove.svg);
+}
+
 .btn.left {
   background-image: url(../assets/i_left.svg);
 }
