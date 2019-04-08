@@ -43,8 +43,6 @@ class Control extends Component {
           </div>
           <div className="ctrl-colors">
             {TYPE_OPTS.map(opt => { 
-              console.log(">>>>opt", opt)
-              console.log(">>>>his.state.currType", this.props.currType)
               return(
               opt === this.props.currType ?
                 <ColorSelector 
