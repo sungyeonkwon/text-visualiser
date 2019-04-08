@@ -1,0 +1,101 @@
+.round-btn.add {
+  position: absolute;
+  left:calc(47vw);
+  top:calc(47vw);
+  background-color:blue;
+  width:50px;
+  height:50px;
+  border-radius:50px;
+  border:none;
+}
+
+.btn {
+  width:100%;
+  height:100%;
+  border:none;
+  background-color:grey;
+}
+
+.btn:hover {
+  background-color:pink;
+}
+
+.btn.ctrl {
+  display: inline-block;
+  width:50px;
+  height: 50px;
+  position:absolute;
+}
+
+.icon {
+  background-repeat: no-repeat;
+  cursor: pointer;
+  content: "";
+}
+
+.btn.left {
+  background-image: url(../assets/i_left.svg);
+}
+
+.btn.right {
+  background-image: url(../assets/i_right.svg);
+}
+
+.btn.center {
+  background-image: url(../assets/i_center.svg);
+}
+
+.btn.rect {
+  background-image: url(../assets/i_rect.svg);
+}
+
+.btn.circle {
+  background-image: url(../assets/i_circle.svg);
+}
+
+.Control {
+  position:absolute;
+  left:0px;
+  top:50px;
+  width:400px;
+}
+
+.ctrl-wrapper--align, .ctrl-wrapper--shape, .ctrl-wrapper--color {
+  height:100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.ctrl-types{
+  height:150px;
+  width:30%;
+  background-color:pink;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.ctrl-colors{
+  width:70%;
+  height:150px;
+  background-color:pink;
+}
+
+.Color {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-flow: row wrap;
+  // justify-content: space-evenly;
+}
+.color-opt {
+  width:10%;
+  height:150px;
+}
+
+.color-opt:hover {
+  background-color:blue;
+}

@@ -1,0 +1,46 @@
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+body {
+  overflow-y:scroll;
+}
+
+html,
+body {
+  overflow-x:hidden;
+  height:100vh;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+}
+
+div {
+  box-sizing: border-box;
+  display: block;
+}
+
+li, ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
