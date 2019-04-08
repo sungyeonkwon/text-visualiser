@@ -33,13 +33,20 @@ class Unit extends Component {
   componentDidMount() {
     let edge = Math.floor(this.UnitRef.current.clientWidth / 2)
     this.setState({ edge });
+    this.setState({ textArr: this.props.poem.text }, () => {
+      this.getLineCount(this.props.poem.text)
+      this.getMaxChar(this.props.poem.text)
+    })
     window.addEventListener("resize", this.onWindowResize);
   }
 
   onWindowResize = e => {
     if (this.UnitRef.current){
       this.setState({ showControl: false })
-      this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2)});
+      this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2)}, () => {
+        this.setState({ blockH: Math.floor( this.state.edge / this.state.textArr.length)}) // TODO: initial condition
+        this.setState({ blockW: Math.floor( this.state.edge / this.state.maxChar)}) // TODO: initial condition
+      });
     }
   };
 
@@ -106,11 +113,13 @@ class Unit extends Component {
   }
 
   render(){
-    console.log("[Unit] state ", this.state)
 
     return(
       <div className="Unit" ref={this.UnitRef}>
-        <Textbox callbackOnClick={this.callbackOnClick} callbackOnChange={this.callbackOnChange}/>
+        <Textbox 
+          poem={this.props.poem}
+          callbackOnClick={this.callbackOnClick} 
+          callbackOnChange={this.callbackOnChange}/>
         <Frame 
           textArr={this.state.textArr}
           align={this.state.align}

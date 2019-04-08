@@ -10,6 +10,7 @@ body {
 
 html,
 body {
+  background-color:grey;
   overflow-x:hidden;
   height:100vh;
   margin: 0;
@@ -26,6 +27,10 @@ h1, h2, h3, h4, h5 {
 
 * {
   box-sizing: border-box;
+}
+
+button:focus {
+  outline:0;
 }
 
 a {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Unit from './components/Unit';
+import { POEMS } from './constants/constants';
 import './_scss/styles.scss';
 
 class App extends Component {
@@ -37,9 +38,12 @@ class App extends Component {
   }
 
   render(){
-    const units = this.state.unitSequence.map(unit => {
+    console.log("POEMS", POEMS)
+
+    const units = this.state.unitSequence.map((unit, i) => {
       return(
         <Unit
+          poem={POEMS[i % POEMS.length]}
           key={unit}
           unitKey={unit}
           callbackOnAddUnit={this.callbackOnAddUnit}
@@ -47,7 +51,7 @@ class App extends Component {
         />
       )
     })
-    return <>{units}</>
+    return <div className="unit-container">{units}</div>
   }
 }
 

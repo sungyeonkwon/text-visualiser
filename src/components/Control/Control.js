@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import ColorSelector from './ColorSelector';
 import { ALIGN_OPTS, SHAPE_OPTS, TYPE_OPTS } from '../../constants/constants';
-import { NONAME } from 'dns';
 
 class Control extends Component {
 
   createBtn = (cls, name=null) => {
+    let selected = this.props.currType === cls ? 'selected' : null;
     return(
       <button 
         key={cls}
         onClick={() => this.onBtnClick(cls)}
-        className={`btn icon ${cls}`}>{name}</button>
+        className={`btn icon ${cls} ${selected}`}>{name}</button>
     )
   }
 

@@ -11,7 +11,6 @@ const Color = props => {
       style={{ backgroundColor: props.color}} 
       onClick={(e) => selectColor(e, props.color)} 
       className="Color" >
-      iam color
     </div>
   )
 }

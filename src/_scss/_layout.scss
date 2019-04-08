@@ -1,9 +1,14 @@
+.unit-container {
+  margin-bottom:150px;
+}
+
 .Unit {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   position: relative;
+  border-top:1px solid grey;
 }
 
 .container-sqr{
@@ -18,7 +23,7 @@
 
 .Textbox {
   resize: none;
-  padding: 15px 10px 15px 10px;
+  padding: 65px 10px 15px 10px;
   font-family: serif;
   font-size: 40px;
   width: 100%;
@@ -32,11 +37,16 @@
 }
 
 .Textbox--title {
+  background: rgba(255,255,255,0.85);
   border:none;
   border-bottom:1px solid rgba(45,45,45,0.1);
   height:50px;
   width:100%;
   padding:10px 10px 10px 70px;
   font-size:26px;
+  position:absolute;
+}
 
+.container-sqr.frame {
+  z-index:3;
 }

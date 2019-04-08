@@ -46,7 +46,7 @@ const Frame = (props) => {
 
   return(
     <div 
-      className="container-sqr"
+      className="container-sqr frame"
       style={{ backgroundColor: props.color.background}}
     >
       { allBlocks() }
