@@ -22,6 +22,7 @@ class Unit extends Component {
   onWindowResize = e => {
     const containerMargin = 0;
     if (this.UnitRef.current){
+      this.setState({ showControl: false })
       this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2) - containerMargin});
     }
   };
