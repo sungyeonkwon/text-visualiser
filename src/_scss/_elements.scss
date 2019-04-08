@@ -102,18 +102,18 @@
   background-color:pink;
 }
 
-.Color {
+.ColorSelector {
   display: flex;
   margin: 0;
   padding: 0;
   flex-flow: row wrap;
   // justify-content: space-evenly;
 }
-.color-opt {
+.Color{
   width:10%;
   height:150px;
 }
 
-.color-opt:hover {
+.Color:hover {
   background-color:blue;
 }

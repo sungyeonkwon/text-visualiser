@@ -1,12 +1,23 @@
 import React, { Component} from 'react'
-import { COLOR_OPTS } from '../../constants/constants';
 
 class Color extends Component {
 
+  state = {
+    selectColor: null,
+  }
+
+  selectColor = color => {
+    // console.log("this color fn", color)
+    // this.props.callbackOnColorSelect(color)
+  }
+
   render(){
+    // console.log("this.props.color", this.props.color)
     return(
-      <div className="Color">
-        {COLOR_OPTS.map(color => <div className="color-opt">color</div>)}
+      <div
+        onClick={(e) => this.selectColor(this.props.color)} 
+        className="Color" >
+        iam color
       </div>
     )
   }

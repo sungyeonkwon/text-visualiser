@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Textbox from './Textbox';
 import Frame from './Frame/Frame';
 import Control from './Control/Control';
+import { ALIGN_OPTS, SHAPE_OPTS, TYPE_OPTS } from '../constants/constants';
 
 class Unit extends Component {
 
@@ -11,6 +12,20 @@ class Unit extends Component {
     showControl: false,
     text: '',
     edge: 1,
+    blockW: 1,
+    blockH: 1,
+    lineCount: 0,
+    maxChar: 0,
+    align: 'center',
+    shape: 'circle',
+    color: {
+      whitespace: 'blue',
+      lowercase: 'red',
+      uppercase: 'purple',
+      fullstop: 'yellow',
+      comma: 'grey',
+      background: 'pink',
+    },
   }
 
   componentDidMount() {
@@ -27,12 +42,45 @@ class Unit extends Component {
     }
   };
 
+  processText = text => {
+    let textArr;
+    if (text.match(/\n/) == null){ // first line only
+      textArr = [text]
+    } else { // multi lines
+      textArr = text.split(/\n/).map(line => line.split(' '))
+    }
+    this.getLineCount(textArr)
+    this.getMaxChar(textArr)
+    
+  }
+
+  getLineCount = textArr => {
+    this.setState({lineCount: textArr.length })
+  }
+
+  getMaxChar = textArr => {
+    this.setState({ maxChar: Math.max(...textArr.map(line => line.toString().length)) })
+  }
+
   callbackOnChange = text => {
-    this.setState({ text: text })
+    this.setState({ text })
+    this.processText(text)
   }
 
   callbackOnClick = () => {
     this.setState({ showControl: !this.state.showControl })
+  }
+
+  callbackOnBtn = name => {
+    if (ALIGN_OPTS.includes(name)){
+      this.setState({ align: name })
+    } else if (SHAPE_OPTS.includes(name)){
+      this.setState({ shape: name })
+    }
+  }
+
+  callbackOnColorSelect = color => {
+    console.log("got the color", color)
   }
 
   onClickAddUnit = () => {
@@ -44,10 +92,18 @@ class Unit extends Component {
   }
 
   render(){
+    console.log("[Unit] state ", this.state)
+
     return(
       <div className="Unit" ref={this.UnitRef}>
         <Textbox callbackOnClick={this.callbackOnClick} callbackOnChange={this.callbackOnChange}/>
-        <Frame edge={this.state.edge} text={this.state.text}/>
+        <Frame 
+          edge={this.state.edge} 
+          text={this.state.text}
+          align={this.state.align}
+          shape={this.state.shape}
+          color={this.state.color}
+        />
         <button 
           className="add round-btn btn icon" 
           onClick={this.onClickAddUnit}  
@@ -56,7 +112,9 @@ class Unit extends Component {
           className="remove btn icon" 
           onClick={this.onClickRemoveUnit} 
         />
-        { this.state.showControl? <Control /> : null }
+        { this.state.showControl ? 
+          <Control callbackOnBtn={this.callbackOnBtn} color={this.state.color}/>
+        : null }
       </div>
     )
   }

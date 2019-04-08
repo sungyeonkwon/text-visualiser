@@ -2,16 +2,21 @@ import React from 'react';
 
 const Frame = (props) => {
 
-  // receive text from unit and process it.
-  // put it to the block.
-  // maybe you don't need state here. you don't really.
-  // block is just rendering things.
-
+  console.log("--------")
   console.log(props.text)
   console.log(props.edge)
+  console.log(props.color)
+  console.log(props.shape)
+  console.log(props.align)
+  console.log("--------")
 
   return(
-    <div className="container-sqr">frame</div>
+    <div 
+      className="container-sqr"
+      style={{ backgroundColor: props.color.background}}
+    >
+      frame
+    </div>
   )
 }
 
