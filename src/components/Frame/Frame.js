@@ -1,21 +1,55 @@
 import React from 'react';
+import Block from './Block';
+
+const charToType = (char) => {
+  if (char === '.') { return 'fullstop'}
+  else if (char === ',') { return 'comma'}
+  else if (char === ' ') { return 'whitespace'}
+  else if (char === char.toLowerCase()) { return 'lowercase'}
+  else if (char === char.toUpperCase()) { return 'uppercase'}
+}
 
 const Frame = (props) => {
 
-  console.log("--------")
-  console.log(props.text)
-  console.log(props.edge)
-  console.log(props.color)
-  console.log(props.shape)
-  console.log(props.align)
-  console.log("--------")
+  const allBlocks = () => {
+    const blocks = props.textArr.map(line => {
+      if (line == ''){
+        return(
+          <div className={`line ${props.align} ${props.shape}`}>
+          <Block
+            color={props.color}
+            blockH={props.blockH}
+            blockW={props.blockW}
+            type="return"
+          />
+        </div>
+        )
+      }
+      const lineStr = typeof line === 'string'? line : line.join(' ')
+      return (
+        <div className={`line ${props.align} ${props.shape}`}>
+          {lineStr.split('').map((char, i) => {
+          return (<Block
+            key={i}
+            color={props.color}
+            blockH={props.blockH}
+            blockW={props.blockW}
+            type={charToType(char)}
+          />)
+        })}
+      </div>
+      )
+    })
+
+    return <>{blocks}</>
+  }
 
   return(
     <div 
       className="container-sqr"
       style={{ backgroundColor: props.color.background}}
     >
-      frame
+      { allBlocks() }
     </div>
   )
 }

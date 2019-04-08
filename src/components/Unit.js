@@ -11,13 +11,15 @@ class Unit extends Component {
   state = {
     showControl: false,
     text: '',
+    textArr: ['0'],
     edge: 1,
     blockW: 1,
     blockH: 1,
-    lineCount: 0,
-    maxChar: 0,
+    lineCount: 1,
+    maxChar: 1,
     align: 'center',
     shape: 'circle',
+    currType: 'whitespace',
     color: {
       whitespace: 'blue',
       lowercase: 'red',
@@ -29,16 +31,15 @@ class Unit extends Component {
   }
 
   componentDidMount() {
-    const containerMargin = 0;
-    this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2) - containerMargin });
+    let edge = Math.floor(this.UnitRef.current.clientWidth / 2)
+    this.setState({ edge });
     window.addEventListener("resize", this.onWindowResize);
   }
 
   onWindowResize = e => {
-    const containerMargin = 0;
     if (this.UnitRef.current){
       this.setState({ showControl: false })
-      this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2) - containerMargin});
+      this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2)});
     }
   };
 
@@ -49,17 +50,22 @@ class Unit extends Component {
     } else { // multi lines
       textArr = text.split(/\n/).map(line => line.split(' '))
     }
-    this.getLineCount(textArr)
-    this.getMaxChar(textArr)
-    
+    this.setState({ textArr }, () => {
+      this.getLineCount(textArr)
+      this.getMaxChar(textArr)
+    })
   }
 
   getLineCount = textArr => {
-    this.setState({lineCount: textArr.length })
+    this.setState({lineCount: textArr.length }, () => {
+      this.setState({ blockH: Math.floor( this.state.edge / this.state.textArr.length)}) // TODO: initial condition
+    })
   }
 
   getMaxChar = textArr => {
-    this.setState({ maxChar: Math.max(...textArr.map(line => line.toString().length)) })
+    this.setState({ maxChar: Math.max(...textArr.map(line => line.toString().length)) }, () =>{
+      this.setState({ blockW: Math.floor( this.state.edge / this.state.maxChar)}) // TODO: initial condition
+    })
   }
 
   callbackOnChange = text => {
@@ -79,8 +85,16 @@ class Unit extends Component {
     }
   }
 
-  callbackOnColorSelect = color => {
-    console.log("got the color", color)
+  callbackOnBtnType = type => {
+    console.log("Unit type got it", type)
+    this.setState({ currType: type})
+    // set the color state according to the type
+  }
+
+  setColorType = ([color, type]) => {
+    let stateColor = { ...this.state.color}
+    stateColor[type] = color
+    this.setState({ color: stateColor})
   }
 
   onClickAddUnit = () => {
@@ -98,11 +112,12 @@ class Unit extends Component {
       <div className="Unit" ref={this.UnitRef}>
         <Textbox callbackOnClick={this.callbackOnClick} callbackOnChange={this.callbackOnChange}/>
         <Frame 
-          edge={this.state.edge} 
-          text={this.state.text}
+          textArr={this.state.textArr}
           align={this.state.align}
           shape={this.state.shape}
           color={this.state.color}
+          blockW={this.state.blockW}
+          blockH={this.state.blockH}
         />
         <button 
           className="add round-btn btn icon" 
@@ -113,7 +128,13 @@ class Unit extends Component {
           onClick={this.onClickRemoveUnit} 
         />
         { this.state.showControl ? 
-          <Control callbackOnBtn={this.callbackOnBtn} color={this.state.color}/>
+          <Control 
+            currType={this.state.currType}
+            callbackOnBtn={this.callbackOnBtn} 
+            callbackOnBtnType={this.callbackOnBtnType}
+            color={this.state.color}
+            callbackOnColorSelect={this.setColorType}
+          />
         : null }
       </div>
     )

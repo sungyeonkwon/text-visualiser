@@ -8,14 +8,19 @@ class ColorSelector extends Component {
     selectColor: null,
   }
 
+  passSelectedColor = (color) => {
+    this.setState({ selectColor: color })
+    this.props.callbackOnColorSelect([color, this.props.type])
+  }
+
   render(){
     return(
       <div className="ColorSelector">
         {COLOR_OPTS.map((color, i) => 
           <Color 
-            color={this.props.color}
+            callbackOnColorSelect = {this.passSelectedColor}
+            color={color}
             key={i}
-            style={{ backgroundColor: color}} 
           />
         )}
       </div>

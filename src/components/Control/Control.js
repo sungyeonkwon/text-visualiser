@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import ColorSelector from './ColorSelector';
 import { ALIGN_OPTS, SHAPE_OPTS, TYPE_OPTS } from '../../constants/constants';
+import { NONAME } from 'dns';
 
 class Control extends Component {
-
-  state = {
-    selectedColor: '',
-  }
 
   createBtn = (cls, name=null) => {
     return(
@@ -17,12 +14,20 @@ class Control extends Component {
     )
   }
 
-  onBtnClick = (name) => {
-    this.props.callbackOnBtn(name)
+  onBtnClick = name => {
+    if ([...ALIGN_OPTS, ...SHAPE_OPTS].includes(name)){
+      this.props.callbackOnBtn(name)
+    } else {
+      this.props.callbackOnBtnType(name)
+    }
+  }
+
+  passSelectedColor = ([color, type]) => {
+    this.props.callbackOnColorSelect([color, type])
   }
 
   render() {
-    console.log('this.props.color', this.props.color)
+    console.log('@@@@@', this.props.currType)
 
     return(
       <div className="Control">
@@ -37,7 +42,18 @@ class Control extends Component {
             {TYPE_OPTS.map(opt => this.createBtn(opt, opt))}
           </div>
           <div className="ctrl-colors">
-            <ColorSelector color={this.props.color}/>
+            {TYPE_OPTS.map(opt => { 
+              console.log(">>>>opt", opt)
+              console.log(">>>>his.state.currType", this.props.currType)
+              return(
+              opt === this.props.currType ?
+                <ColorSelector 
+                  key={opt}
+                  type={opt}
+                  callbackOnColorSelect={this.passSelectedColor}
+                  color={this.props.color}/> : null
+              )
+            })}
           </div>        
         </div>
 

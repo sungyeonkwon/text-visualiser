@@ -1,26 +1,19 @@
 import React, { Component} from 'react'
 
-class Color extends Component {
+const Color = props => {
 
-  state = {
-    selectColor: null,
+  const selectColor = (e, color) => {
+    props.callbackOnColorSelect(color)
   }
 
-  selectColor = color => {
-    // console.log("this color fn", color)
-    // this.props.callbackOnColorSelect(color)
-  }
-
-  render(){
-    // console.log("this.props.color", this.props.color)
-    return(
-      <div
-        onClick={(e) => this.selectColor(this.props.color)} 
-        className="Color" >
-        iam color
-      </div>
-    )
-  }
+  return(
+    <div
+      style={{ backgroundColor: props.color}} 
+      onClick={(e) => selectColor(e, props.color)} 
+      className="Color" >
+      iam color
+    </div>
+  )
 }
 
 export default Color

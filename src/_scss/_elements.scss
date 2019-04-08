@@ -107,13 +107,71 @@
   margin: 0;
   padding: 0;
   flex-flow: row wrap;
-  // justify-content: space-evenly;
 }
 .Color{
   width:10%;
   height:150px;
+  cursor:pointer;
 }
 
 .Color:hover {
   background-color:blue;
+}
+
+.line {
+  line-height:0em;
+  margin:0;
+  padding:0;
+  // transition: all 0.7s ease-in-out;
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.line.circle span{
+  border-radius:500px;
+}
+.line.rect span{
+  border-radius:0px;
+}
+.line.right{
+  justify-content:flex-end;
+}
+.line.center{
+  justify-content:center;
+}
+.line.left{
+  justify-content:flex-start;
+}
+
+.Block {
+  border-radius: 100px;
+  background-color: orange;
+  display: inline-block;
+  width: 30px;
+  height: 50px;
+  // transition: border-radius 0.7s ease-in-out;
+}
+.Block.uppercase {
+  background-color: brown;
+}
+.Block.lowercase {
+  background-color: lightgreen;
+}
+.Block.whitespace {
+  background-color: white;
+}
+.Block.return {
+  background-color: grey;
+}
+.Block.fullstop {
+  background-color: red;
+}
+.Block.comma {
+  background-color: green;
+}
+.Block.rect{
+  border-radius: 0px;
+}
+.Block.circle{
+  border-radius: 500px;
 }
