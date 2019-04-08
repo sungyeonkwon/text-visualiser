@@ -4,13 +4,10 @@ export const SHAPE_OPTS = ['circle', 'rect']
 export const COLOR_OPTS = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#4caf50', '#8bc34a', '#cddc39','#00bcd4', '#009688', '#4caf50']
 export const POEMS = [
   {
-    title: "You fit into me",
+    title: "April",
     text:
-    [["you fit into me"],
-    ["like a hook into an eye"],
-    [""],
-    ["a fish hook"],
-    ["an open eye"]]
+    [["Cat"],
+    [""]],
   },
   {
     title: "Easter Wings",
@@ -45,6 +42,12 @@ export const POEMS = [
     [""],
     ["etc"]]
   },
+  {
+    title: "Ping",
+    text: 
+    [["Ping"],
+    ["Pong"]],
+  },
   { 
     title: "The Rose Family",
     text: 
@@ -64,6 +67,15 @@ export const POEMS = [
     text: 
     [["The apparition of these faces in the crowd:"],
     ["Petals on a wet, black bough."]]
+  },
+  {
+    title: "You fit into me",
+    text:
+    [["you fit into me"],
+    ["like a hook into an eye"],
+    [""],
+    ["a fish hook"],
+    ["an open eye"]]
   },
   {
     title: "Hymn to Aphrodite",
