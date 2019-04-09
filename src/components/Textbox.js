@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Textbox = (props) => {
+class Textbox extends Component {
+  state = {
+    value: this.props.poem.text.join('\n')
+  }
 
-  return(
-    <div className="container-sqr">
-      <button className="btn icon ctrl" onClick={(e) => props.callbackOnClick(e)}/>
-      <input 
-        className="Textbox--title" type="text" 
-        placeholder={props.poem.title}/>
-      <textarea
-        placeholder={props.poem.text.join('\n')}
-        onChange={(e) => props.callbackOnChange(e.target.value)}
-        className="Textbox"
-        autoFocus>
-      </textarea>
-    </div>
-  )
+  onValueChange = (value) => {
+    this.setState({ value })
+    this.props.callbackOnChange(value)
+  }
+
+  render(){
+    return(
+      <div className="container-sqr">
+        <button className="btn icon ctrl" onClick={(e) => this.props.callbackOnClick(e)}/>
+        <input 
+          className="Textbox--title" type="text" 
+          placeholder={this.props.poem.title}/>
+        <textarea
+          value={this.state.value}
+          onChange={(e) => this.onValueChange(e.target.value)}
+          className="Textbox"
+          autoFocus>
+        </textarea>
+      </div>
+    )
+  }
 }
-
 export default Textbox

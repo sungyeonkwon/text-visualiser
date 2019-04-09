@@ -1,24 +1,24 @@
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-body {
-  overflow-y:scroll;
-}
-
 html,
 body {
+  scroll-behavior: smooth;
   background-color:grey;
   overflow-x:hidden;
   height:100vh;
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: sans-serif;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+body {
+  overflow-y:scroll;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 h1, h2, h3, h4, h5 {

@@ -7,7 +7,7 @@ import './_scss/styles.scss';
 class App extends Component {
 
   state = {
-    unitSequence: [0, 1],
+    unitSequence: [0],
   }
 
   // TODO: use library

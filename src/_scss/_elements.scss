@@ -1,30 +1,44 @@
 .round-btn.add {
   position: absolute;
-  left:calc(47vw);
-  top:calc(47vw);
-  background-color:blue;
-  width:50px;
-  height:50px;
+  left:calc(50vw - 35px -18px);
+  top:calc(50vw - 35px);
+  background-color:black;
+  width:70px;
+  height:70px;
   border-radius:50px;
   border:none;
 }
 
-.btn {
+.btn-wrapper {
+  transition: all 0.2s ease-in-out;
   width:100%;
   height:100%;
-  border:none;
-  background-color:grey;
+  border:2px solid white;
+  background:black;
+  border-radius:5px;
+
+}
+.btn-wrapper:hover {
+  background-color:#4c4c4c;
 }
 
-.btn:hover {
-  background-color:pink;
+.btn-wrapper.selected {
+  background-color:#4c4c4c;
+}
+
+.btn {
+  width:70%;
+  border:none;
+  background-color:transparent;
 }
 
 .btn.ctrl {
+  left: 5px;
   display: inline-block;
-  width:50px;
-  height: 50px;
-  position:absolute;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 6px;
 }
 
 .icon {
@@ -55,47 +69,74 @@
 
 .btn.left {
   background-image: url(../assets/i_left.svg);
+  height: 96%;
+  margin-left: 6.2vw;
+  margin-top: 0.1vw;
 }
 
 .btn.right {
   background-image: url(../assets/i_right.svg);
+  height: 96%;
+  margin-left: 5.7vw;
+  margin-top: 0.1vw;
 }
 
 .btn.center {
   background-image: url(../assets/i_center.svg);
+  height: 96%;
+  margin-left: 5.8vw;
+  margin-top: 0.1vw;
 }
 
 .btn.rect {
   background-image: url(../assets/i_rect.svg);
+  height: 100%;
+  margin-left: 9.7vw;
+  margin-top: 0.03vw;
 }
 
 .btn.circle {
   background-image: url(../assets/i_circle.svg);
+  height: 98%;
+  margin-left: 9.7vw;
+  margin-top: 0.08vw;
+}
+.ctrl-types {
+  .whitespace, .fullstop, .background, .lowercase, .uppercase, .comma {
+    text-transform: capitalize;
+    color: white;
+    width: 100%;
+    letter-spacing: 0.06rem;
+    font-size:20px;
+    margin-top: 9px;
+  }
 }
 
-.btn.icon.selected {
-  background-color:red;
-}
 
 .Control {
   position:absolute;
   left:0px;
   top:50px;
-  width:400px;
+  width:calc(50vw - 7px);
 }
 
 .ctrl-wrapper--align, .ctrl-wrapper--shape, .ctrl-wrapper--color {
-  height:100px;
+  height:54px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
 }
 
+.ctrl-wrapper--color{
+  height:100px;
+
+}
+
 .ctrl-types{
-  height:150px;
-  width:30%;
-  background-color:pink;
+  height:300px;
+  width:70%;
+  // background-color:pink;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -104,8 +145,7 @@
 
 .ctrl-colors{
   width:70%;
-  height:150px;
-  background-color:pink;
+  height: 300px;
 }
 
 .ColorSelector {
@@ -113,16 +153,23 @@
   margin: 0;
   padding: 0;
   flex-flow: row wrap;
+  border-radius:5px;
+  border:2px solid white;
+  box-sizing: border-box;
+  height:100%;
 }
 .Color{
-  width:10%;
-  height:150px;
+  width: 16.666%;
+  height:100%;
+  // border-radius: 5px;
+  // border: 2px solid white;
   filter:brightness(90%);
   cursor:pointer;
 }
 
 .Color:hover {
   filter:brightness(100%);
+  // border: 4px solid white;
 }
 
 .line {
@@ -156,7 +203,7 @@
   display: inline-block;
   width: 30px;
   height: 50px;
-  // transition: border-radius 0.7s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .Block.uppercase {
   background-color: brown;

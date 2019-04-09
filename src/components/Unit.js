@@ -21,12 +21,12 @@ class Unit extends Component {
     shape: 'circle',
     currType: 'whitespace',
     color: {
-      whitespace: 'blue',
-      lowercase: 'red',
-      uppercase: 'purple',
-      fullstop: 'yellow',
-      comma: 'grey',
-      background: 'pink',
+      whitespace: '#eaeaea',
+      lowercase: '#cecece',
+      uppercase: '#aaaaaa',
+      fullstop: '#848484',
+      comma: '#636363',
+      background: '#424242',
     },
   }
 
@@ -42,7 +42,7 @@ class Unit extends Component {
 
   onWindowResize = e => {
     if (this.UnitRef.current){
-      this.setState({ showControl: false })
+      // this.setState({ showControl: false })
       this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2)}, () => {
         this.setState({ blockH: Math.floor( this.state.edge / this.state.textArr.length)}) // TODO: initial condition
         this.setState({ blockW: Math.floor( this.state.edge / this.state.maxChar)}) // TODO: initial condition
@@ -132,10 +132,10 @@ class Unit extends Component {
           className="add round-btn btn icon" 
           onClick={this.onClickAddUnit}  
         />
-        <button 
+        {/* <button 
           className="remove btn icon" 
           onClick={this.onClickRemoveUnit} 
-        />
+        /> */}
         { this.state.showControl ? 
           <Control 
             currType={this.state.currType}
