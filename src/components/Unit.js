@@ -41,17 +41,6 @@ class Unit extends Component {
     window.addEventListener("resize", this.onWindowResize);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log("prevState", prevState.showControl)
-  //   console.log("currState", this.state.showControl)
-  //   if (prevState.showControl === false) {
-  //     console.log("now loading")
-  //     // this.setState({ slideDown: true})
-  //   } else {
-  //     // this.setState({ slideDown: false})
-  //   }
-  // }
-
   onWindowResize = e => {
     if (this.UnitRef.current){
       // this.setState({ showControl: false })
@@ -94,10 +83,8 @@ class Unit extends Component {
 
   callbackOnClick = () => {
     if (!this.state.showControl){
-      console.log("this.state.showControl", this.state.showControl)
       this.setState({ addClassToControl: 'slide' })
     } else {
-      console.log("this.state.showControl", this.state.showControl)
       this.setState({ addClassToControl: '' })
     }
     this.setState({ showControl: !this.state.showControl })
@@ -131,7 +118,6 @@ class Unit extends Component {
   }
 
   render(){
-    console.log("got", this.props.addClassToControl)
 
     return(
       <div className="Unit" ref={this.UnitRef}>
