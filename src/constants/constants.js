@@ -1,4 +1,4 @@
-export const TYPE_OPTS = ['whitespace', 'lowercase', 'uppercase', 'fullstop', 'comma', 'background']
+export const TYPE_OPTS = ['lowercase', 'uppercase', 'whitespace', 'fullstop', 'comma', 'background']
 export const ALIGN_OPTS = ['left', 'center', 'right']
 export const SHAPE_OPTS = ['circle', 'rect']
 export const COLOR_OPTS = ['#ff2c2c', '#f99900', '#c9f900', '#4caf50', '#0086ff', '#673ab7']

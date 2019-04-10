@@ -20,7 +20,7 @@ class Unit extends Component {
     maxChar: 1,
     align: 'center',
     shape: 'circle',
-    currType: 'whitespace',
+    currType: 'lowercase',
     color: {
       whitespace: '#eaeaea',
       lowercase: '#cecece',
