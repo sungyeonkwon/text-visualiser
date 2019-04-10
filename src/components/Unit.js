@@ -10,6 +10,7 @@ class Unit extends Component {
 
   state = {
     showControl: false,
+    addClassToControl: 'slide',
     text: '',
     textArr: ['0'],
     edge: 1,
@@ -39,6 +40,17 @@ class Unit extends Component {
     })
     window.addEventListener("resize", this.onWindowResize);
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("prevState", prevState.showControl)
+  //   console.log("currState", this.state.showControl)
+  //   if (prevState.showControl === false) {
+  //     console.log("now loading")
+  //     // this.setState({ slideDown: true})
+  //   } else {
+  //     // this.setState({ slideDown: false})
+  //   }
+  // }
 
   onWindowResize = e => {
     if (this.UnitRef.current){
@@ -81,6 +93,13 @@ class Unit extends Component {
   }
 
   callbackOnClick = () => {
+    if (!this.state.showControl){
+      console.log("this.state.showControl", this.state.showControl)
+      this.setState({ addClassToControl: 'slide' })
+    } else {
+      console.log("this.state.showControl", this.state.showControl)
+      this.setState({ addClassToControl: '' })
+    }
     this.setState({ showControl: !this.state.showControl })
   }
 
@@ -95,7 +114,6 @@ class Unit extends Component {
   callbackOnBtnType = type => {
     console.log("Unit type got it", type)
     this.setState({ currType: type})
-    // set the color state according to the type
   }
 
   setColorType = ([color, type]) => {
@@ -113,6 +131,7 @@ class Unit extends Component {
   }
 
   render(){
+    console.log("got", this.props.addClassToControl)
 
     return(
       <div className="Unit" ref={this.UnitRef}>
@@ -136,15 +155,16 @@ class Unit extends Component {
           className="remove btn icon" 
           onClick={this.onClickRemoveUnit} 
         /> */}
-        { this.state.showControl ? 
+        {/* { this.state.showControl ?  */}
           <Control 
             currType={this.state.currType}
             callbackOnBtn={this.callbackOnBtn} 
             callbackOnBtnType={this.callbackOnBtnType}
             color={this.state.color}
             callbackOnColorSelect={this.setColorType}
+            addClassToControl={this.state.addClassToControl}
           />
-        : null }
+        {/* : null } */}
       </div>
     )
   }

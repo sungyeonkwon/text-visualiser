@@ -112,12 +112,21 @@
   }
 }
 
-
 .Control {
+  z-index:1;
   position:absolute;
   left:0px;
   top:50px;
   width:calc(50vw - 7px);
+  transform: translate(-800px,0px);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.Control.slide {
+  transform: translate(0px, 0px);
 }
 
 .ctrl-wrapper--align, .ctrl-wrapper--shape, .ctrl-wrapper--color {

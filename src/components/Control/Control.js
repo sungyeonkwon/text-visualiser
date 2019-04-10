@@ -30,10 +30,10 @@ class Control extends Component {
   }
 
   render() {
-    console.log('@@@@@', this.props.currType)
+    console.log('@@@@@', this.props.addClassToControl)
 
     return(
-      <div className="Control">
+      <div className={`Control ${this.props.addClassToControl}`}>
         <div className="ctrl-wrapper--align">
           {ALIGN_OPTS.map(opt => this.createBtn(opt))}
         </div>
