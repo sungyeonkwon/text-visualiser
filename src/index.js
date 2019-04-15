@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { CSSTransitionGroup } from 'react-transition-group';
 import Unit from './components/Unit';
 import { POEMS } from './constants/constants';
 import './_scss/styles.scss';
@@ -38,20 +39,30 @@ class App extends Component {
   }
 
   render(){
-    console.log("POEMS", POEMS)
-
     const units = this.state.unitSequence.map((unit, i) => {
       return(
-        <Unit
-          poem={POEMS[i % POEMS.length]}
-          key={unit}
-          unitKey={unit}
-          callbackOnAddUnit={this.callbackOnAddUnit}
-          callbackOnRemoveUnit={this.callbackOnRemoveUnit}
-        />
+          <Unit
+            poem={POEMS[i % POEMS.length]}
+            key={unit}
+            unitKey={unit}
+            callbackOnAddUnit={this.callbackOnAddUnit}
+            callbackOnRemoveUnit={this.callbackOnRemoveUnit}
+          />
       )
     })
-    return <div className="unit-container">{units}</div>
+    return (
+      <div className="unit-container">
+        <CSSTransitionGroup
+        transitionName="transition-unit"
+        transitionAppear={true}
+        transitionAppearTimeout={300}
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
+        >
+          {units}
+        </CSSTransitionGroup>
+      </div>
+    )   
   }
 }
 

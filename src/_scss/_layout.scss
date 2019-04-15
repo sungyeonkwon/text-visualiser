@@ -24,21 +24,21 @@
 .Textbox {
   resize: none;
   padding: 65px 10px 15px 10px;
-  font-family: 'Roboto', serif !important;
+  font-family: 'Libre Baskerville', serif !important;
   font-size:28px;
   line-height:1.5em;
   width: 100%;
   height:100%;
   outline: none;
   background-color: white;
-  color: grey;
+  // color: grey;
   box-shadow: none;
   border:none;
   white-space: pre-wrap;
 }
 
 .Textbox--title {
-  font-family: 'Roboto', serif !important;
+  font-family: 'Libre Baskerville', serif !important;
   background: rgba(255,255,255,1);
   border:none;
   border-bottom:1px solid rgba(45,45,45,0.1);
@@ -47,10 +47,10 @@
   padding:10px 10px 10px 70px;
   font-size:28px;
   position:absolute;
-  color: grey;
+  // color: grey;
   z-index:3;
 }
 
-.container-sqr.frame {
+.container-sqr {
   z-index:3;
 }

@@ -1,12 +1,18 @@
 .round-btn.add {
   position: absolute;
-  left:calc(50vw - 35px -18px);
-  top:calc(50vw - 35px);
+  left:calc(50vw - 30px -18px);
+  top:calc(50vw - 30px);
   background-color:black;
-  width:70px;
-  height:70px;
+  width:60px;
+  height:60px;
   border-radius:50px;
   border:none;
+  transition: background-color 200ms linear;
+
+}
+
+.round-btn.add:hover {
+  background-color:red;
 }
 
 .btn-wrapper {
@@ -113,20 +119,16 @@
 }
 
 .Control {
-  z-index:1;
+  z-index:3;
   position:absolute;
   left:0px;
   top:50px;
   width:calc(50vw - 7px);
-  transform: translate(-800px,0px);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
-}
-.Control.slide {
-  transform: translate(0px, 0px);
 }
 
 .ctrl-wrapper--align, .ctrl-wrapper--shape, .ctrl-wrapper--color {

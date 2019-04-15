@@ -5,7 +5,7 @@ import { ALIGN_OPTS, SHAPE_OPTS, TYPE_OPTS } from '../../constants/constants';
 class Control extends Component {
 
   createBtn = (cls, name=null) => {
-    let selected = this.props.currType === cls ? 'selected' : '';
+    let selected = cls === this.props.currType || cls === this.props.align || cls === this.props.shape ? 'selected' : '';
     return(
       <div className={`btn-wrapper ${selected}`}>
       <button 
@@ -30,7 +30,8 @@ class Control extends Component {
   }
 
   render() {
-    console.log('@@@@@', this.props.addClassToControl)
+    console.log("align", this.props.align)
+    console.log("shape", this.props.shape)
 
     return(
       <div className={`Control ${this.props.addClassToControl}`}>

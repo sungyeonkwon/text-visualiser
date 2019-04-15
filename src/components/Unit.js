@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CSSTransitionGroup } from 'react-transition-group';
 import Textbox from './Textbox';
 import Frame from './Frame/Frame';
 import Control from './Control/Control';
@@ -10,7 +11,6 @@ class Unit extends Component {
 
   state = {
     showControl: false,
-    addClassToControl: 'slide',
     text: '',
     textArr: ['0'],
     edge: 1,
@@ -43,7 +43,6 @@ class Unit extends Component {
 
   onWindowResize = e => {
     if (this.UnitRef.current){
-      // this.setState({ showControl: false })
       this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2)}, () => {
         this.setState({ blockH: Math.floor( this.state.edge / this.state.textArr.length)}) // TODO: initial condition
         this.setState({ blockW: Math.floor( this.state.edge / this.state.maxChar)}) // TODO: initial condition
@@ -82,11 +81,6 @@ class Unit extends Component {
   }
 
   callbackOnClick = () => {
-    if (!this.state.showControl){
-      this.setState({ addClassToControl: 'slide' })
-    } else {
-      this.setState({ addClassToControl: '' })
-    }
     this.setState({ showControl: !this.state.showControl })
   }
 
@@ -99,7 +93,6 @@ class Unit extends Component {
   }
 
   callbackOnBtnType = type => {
-    console.log("Unit type got it", type)
     this.setState({ currType: type})
   }
 
@@ -137,20 +130,33 @@ class Unit extends Component {
           className="add round-btn btn icon" 
           onClick={this.onClickAddUnit}  
         />
-        {/* <button 
+        <button 
           className="remove btn icon" 
           onClick={this.onClickRemoveUnit} 
-        /> */}
-        {/* { this.state.showControl ?  */}
+        />
+        <CSSTransitionGroup
+          transitionName="transition-control"
+          transitionAppear={true}
+          transitionAppearTimeout={1500}
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+        { this.state.showControl ? 
           <Control 
             currType={this.state.currType}
             callbackOnBtn={this.callbackOnBtn} 
             callbackOnBtnType={this.callbackOnBtnType}
             color={this.state.color}
             callbackOnColorSelect={this.setColorType}
-            addClassToControl={this.state.addClassToControl}
+            align={this.state.align}
+            shape={this.state.shape}
           />
-        {/* : null } */}
+         :
+         <Control 
+          addClassToControl="transition-control-leave"
+        />
+         }
+         </CSSTransitionGroup>
       </div>
     )
   }

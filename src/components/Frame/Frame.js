@@ -15,28 +15,36 @@ const Frame = (props) => {
     const blocks = props.textArr.map(line => {
       if (line == ''){
         return(
-          <div className={`line ${props.align} ${props.shape}`}>
-          <Block
-            color={props.color}
-            blockH={props.blockH}
-            blockW={props.blockW}
-            type="return"
-          />
-        </div>
+          <div
+          style={{ height: props.blockH }} 
+            className={`line-container`}>
+            <div className={`line ${props.align} ${props.shape}`}>
+              <Block
+                color={props.color}
+                blockH={props.blockH}
+                blockW={props.blockW}
+                type="return"
+              />
+            </div>
+          </div>
         )
       }
       const lineStr = typeof line === 'string'? line : line.join(' ')
       return (
-        <div className={`line ${props.align} ${props.shape}`}>
-          {lineStr.split('').map((char, i) => {
-          return (<Block
-            key={i}
-            color={props.color}
-            blockH={props.blockH}
-            blockW={props.blockW}
-            type={charToType(char)}
-          />)
-        })}
+        <div 
+          style={{ height: props.blockH }}
+          className={`line-container`}>
+          <div className={`line ${props.align} ${props.shape}`}>
+            {lineStr.split('').map((char, i) => {
+            return (<Block
+              key={i}
+              color={props.color}
+              blockH={props.blockH}
+              blockW={props.blockW}
+              type={charToType(char)}
+            />)
+          })}
+        </div>
       </div>
       )
     })
