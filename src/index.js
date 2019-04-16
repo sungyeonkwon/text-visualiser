@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Unit from './components/Unit';
 import { POEMS } from './constants/constants';
-import './_scss/styles.scss';
+import './_scss/main.scss';
 
 class App extends Component {
 

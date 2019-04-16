@@ -7,11 +7,33 @@ class Control extends Component {
   createBtn = (cls, name=null) => {
     let selected = cls === this.props.currType || cls === this.props.align || cls === this.props.shape ? 'selected' : '';
     return(
-      <div className={`btn-wrapper ${selected}`}>
+      <div 
+        className={`btn-wrapper ${selected}`}
+        onClick={() => this.onBtnClick(cls)}  
+      >
       <button 
         key={cls}
-        onClick={() => this.onBtnClick(cls)}
         className={`btn icon ${cls}`}>{name}
+      </button>
+      </div>
+    )
+  }
+
+  createBtnColor = (cls, name=null) => {
+    let selected = cls === this.props.currType || cls === this.props.align || cls === this.props.shape ? 'selected' : '';
+    return(
+      <div 
+        className={`btn-wrapper ${selected}`}
+        onClick={() => this.onBtnClick(cls)}
+      >
+      <button 
+        key={cls}
+        className={`btn icon ${cls}`}>
+        <span 
+          style={{ backgroundColor: this.props.color[cls] }}
+          className="current-color">
+        </span>
+        {name}
       </button>
       </div>
     )
@@ -30,7 +52,6 @@ class Control extends Component {
   }
 
   render() {
-
     return(
       <div className={`Control ${this.props.addClassToControl}`}>
         <div className="ctrl-overlay">
@@ -42,7 +63,7 @@ class Control extends Component {
           </div>
           <div className="ctrl-wrapper--color">
             <div className="ctrl-types">
-              {TYPE_OPTS.map(opt => this.createBtn(opt, opt))}
+              {TYPE_OPTS.map(opt => this.createBtnColor(opt, opt))}
             </div>
             <div className="ctrl-colors">
               {TYPE_OPTS.map(opt => { 

@@ -32,7 +32,9 @@ class Unit extends Component {
   }
 
   componentDidMount() {
-    let edge = Math.floor(this.UnitRef.current.clientWidth / 2)
+    let window_w = this.UnitRef.current.clientWidth
+    let edge;
+    window_w <= 750 ? edge = window_w : edge = window_w / 2
     this.setState({ edge });
     this.setState({ textArr: this.props.poem.text }, () => {
       this.getLineCount(this.props.poem.text)
@@ -43,9 +45,12 @@ class Unit extends Component {
 
   onWindowResize = e => {
     if (this.UnitRef.current){
-      this.setState({ edge: Math.floor(this.UnitRef.current.clientWidth / 2)}, () => {
-        this.setState({ blockH: Math.floor( this.state.edge / this.state.textArr.length)}) // TODO: initial condition
-        this.setState({ blockW: Math.floor( this.state.edge / this.state.maxChar)}) // TODO: initial condition
+      let window_w = this.UnitRef.current.clientWidth
+      let edge;
+      window_w <= 750 ? edge = window_w : edge = window_w / 2
+      this.setState({ edge }, () => {
+        this.setState({ blockH: this.state.edge / this.state.textArr.length}) // TODO: initial condition
+        this.setState({ blockW: this.state.edge / this.state.maxChar }) // TODO: initial condition
       });
     }
   };
@@ -65,13 +70,13 @@ class Unit extends Component {
 
   getLineCount = textArr => {
     this.setState({lineCount: textArr.length }, () => {
-      this.setState({ blockH: Math.floor( this.state.edge / this.state.textArr.length)}) // TODO: initial condition
+      this.setState({ blockH: this.state.edge / this.state.textArr.length}) // TODO: initial condition
     })
   }
 
   getMaxChar = textArr => {
     this.setState({ maxChar: Math.max(...textArr.map(line => line.toString().length)) }, () =>{
-      this.setState({ blockW: Math.floor( this.state.edge / this.state.maxChar)}) // TODO: initial condition
+      this.setState({ blockW: this.state.edge / this.state.maxChar }) // TODO: initial condition
     })
   }
 
@@ -153,6 +158,7 @@ class Unit extends Component {
           />
          :
          <Control 
+          color={this.state.color}
           addClassToControl="transition-control-leave"
         />
          }
