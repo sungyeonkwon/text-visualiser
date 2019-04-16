@@ -49,3 +49,29 @@ li, ul {
   margin: 0;
   padding: 0;
 }
+
+
+
+/* custom scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(120,120,120);
+  /* background: #000000; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.6);
+  transition: background-color 0.2s ease;
+  /* background: rgba(255,255,255,.5); */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(80,80,80);
+}

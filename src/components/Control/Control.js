@@ -30,35 +30,34 @@ class Control extends Component {
   }
 
   render() {
-    console.log("align", this.props.align)
-    console.log("shape", this.props.shape)
 
     return(
       <div className={`Control ${this.props.addClassToControl}`}>
-        <div className="ctrl-wrapper--align">
-          {ALIGN_OPTS.map(opt => this.createBtn(opt))}
-        </div>
-        <div className="ctrl-wrapper--shape">
-          {SHAPE_OPTS.map(opt => this.createBtn(opt))}
-        </div>
-        <div className="ctrl-wrapper--color">
-          <div className="ctrl-types">
-            {TYPE_OPTS.map(opt => this.createBtn(opt, opt))}
+        <div className="ctrl-overlay">
+          <div className="ctrl-wrapper--align">
+            {ALIGN_OPTS.map(opt => this.createBtn(opt))}
           </div>
-          <div className="ctrl-colors">
-            {TYPE_OPTS.map(opt => { 
-              return(
-              opt === this.props.currType ?
-                <ColorSelector 
-                  key={opt}
-                  type={opt}
-                  callbackOnColorSelect={this.passSelectedColor}
-                  color={this.props.color}/> : null
-              )
-            })}
-          </div>        
+          <div className="ctrl-wrapper--shape">
+            {SHAPE_OPTS.map(opt => this.createBtn(opt))}
+          </div>
+          <div className="ctrl-wrapper--color">
+            <div className="ctrl-types">
+              {TYPE_OPTS.map(opt => this.createBtn(opt, opt))}
+            </div>
+            <div className="ctrl-colors">
+              {TYPE_OPTS.map(opt => { 
+                return(
+                opt === this.props.currType ?
+                  <ColorSelector 
+                    key={opt}
+                    type={opt}
+                    callbackOnColorSelect={this.passSelectedColor}
+                    color={this.props.color}/> : null
+                )
+              })}
+            </div>        
+          </div>
         </div>
-
       </div>
     )
   }
