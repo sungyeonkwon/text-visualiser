@@ -43,12 +43,17 @@
 .transition-control-leave {
   opacity: 0.5;
   transform: translate(-50vw, 0px);
+  @include breakpoint(mobile){
+    transform: translate(-100vw, 0px);
+  }
 }
 
 .transition-control-appear {
   opacity: 0.01;
   transform: translate(-50vw, 0px);
-
+  @include breakpoint(mobile){
+    transform: translate(-100vw, 0px);
+  }
 }
 
 .transition-control-appear.transition-control-appear-active {

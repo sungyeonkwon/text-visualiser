@@ -160,6 +160,12 @@ class Unit extends Component {
          <Control 
           color={this.state.color}
           addClassToControl="transition-control-leave"
+          currType={this.state.currType}
+          callbackOnBtn={this.callbackOnBtn} 
+          callbackOnBtnType={this.callbackOnBtnType}
+          callbackOnColorSelect={this.setColorType}
+          align={this.state.align}
+          shape={this.state.shape}
         />
          }
          </CSSTransitionGroup>
