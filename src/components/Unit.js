@@ -19,6 +19,7 @@ class Unit extends Component {
     lineCount: 1,
     maxChar: 1,
     align: 'center',
+    rotate: 0, // use modular value for 0,1,2,3 
     shape: 'circle',
     currType: 'lowercase',
     color: {
@@ -90,7 +91,9 @@ class Unit extends Component {
   }
 
   callbackOnBtn = name => {
-    if (ALIGN_OPTS.includes(name)){
+    if (name === 'rotate') {
+      this.setState({ rotate: this.state.rotate + 1 })
+    } else if (ALIGN_OPTS.includes(name)){
       this.setState({ align: name })
     } else if (SHAPE_OPTS.includes(name)){
       this.setState({ shape: name })
@@ -116,6 +119,8 @@ class Unit extends Component {
   }
 
   render(){
+    
+    console.log("unit state rotate", this.state.rotate)
 
     return(
       <div className="Unit" ref={this.UnitRef}>
@@ -127,6 +132,7 @@ class Unit extends Component {
           textArr={this.state.textArr}
           align={this.state.align}
           shape={this.state.shape}
+          rotate={this.state.rotate}
           color={this.state.color}
           blockW={this.state.blockW}
           blockH={this.state.blockH}
@@ -135,10 +141,15 @@ class Unit extends Component {
           className="add round-btn btn icon" 
           onClick={this.onClickAddUnit}  
         />
-        <button 
-          className="remove btn icon" 
+        <div 
+          className="remove-container"
           onClick={this.onClickRemoveUnit} 
-        />
+        >
+          <button 
+            className="remove btn icon" 
+          />
+        </div>
+
         <CSSTransitionGroup
           transitionName="transition-control"
           transitionAppear={true}

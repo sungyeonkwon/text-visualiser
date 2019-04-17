@@ -9,6 +9,25 @@ const charToType = (char) => {
   else if (char === char.toUpperCase()) { return 'uppercase'}
 }
 
+const setRotation = (n) => {
+  let result;
+  switch (n % 4) {
+    case 0:
+      result = "0deg"
+      break;
+    case 1:
+      result = "90deg"
+      break;
+    case 2:
+      result = "180deg"
+      break;
+    case 3:
+      result = "270deg"
+      break;
+  }
+  // TODO
+}
+
 const Frame = (props) => {
 
   const allBlocks = () => {

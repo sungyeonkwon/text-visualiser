@@ -55,11 +55,11 @@ class Control extends Component {
     return(
       <div className={`Control ${this.props.addClassToControl}`}>
         <div className="ctrl-overlay">
-          <div className="ctrl-wrapper--align">
-            {ALIGN_OPTS.map(opt => this.createBtn(opt))}
-          </div>
           <div className="ctrl-wrapper--shape">
             {SHAPE_OPTS.map(opt => this.createBtn(opt))}
+          </div>
+          <div className="ctrl-wrapper--align">
+            {ALIGN_OPTS.map(opt => this.createBtn(opt))}
           </div>
           <div className="ctrl-wrapper--color">
             <div className="ctrl-types">
