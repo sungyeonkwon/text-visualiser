@@ -15,7 +15,7 @@ class Textbox extends Component {
       <div className="container-sqr">
         <button className="btn icon ctrl" onClick={(e) => this.props.callbackOnClick(e)}/>
         <input 
-          className="Textbox--title" type="text" 
+          className="Textbox__title" type="text" 
           placeholder={this.props.poem.title}/>
         <textarea
           value={this.state.value}

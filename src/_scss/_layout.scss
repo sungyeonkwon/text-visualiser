@@ -19,6 +19,7 @@
   width:50vw;
   height:50vw;
   background-color:red;
+  z-index:3;
   @include breakpoint(mobile){
     width:100%;
     height:100vw;
@@ -26,7 +27,7 @@
   }
 }
 
-.Textbox:focus, .Textbox--title:focus{
+.Textbox:focus, .Textbox__title:focus{
   outline: none;
 }
 
@@ -46,20 +47,16 @@
   white-space: pre-wrap;
 }
 
-.Textbox--title {
+.Textbox__title {
   font-family: 'Libre Baskerville', serif !important;
-  background: rgba(255,255,255,1);
+  background: white;
   border:none;
-  border-bottom:1px solid rgba(45,45,45,0.1);
+  border-bottom:1px solid $lightgrey;
   height:50px;
   width:100%;
   padding:10px 10px 10px 70px;
   font-size:28px;
   position:absolute;
-  // color: grey;
-  z-index:3;
-}
-
-.container-sqr {
+  color: black;
   z-index:3;
 }

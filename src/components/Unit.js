@@ -23,12 +23,18 @@ class Unit extends Component {
     shape: 'circle',
     currType: 'lowercase',
     color: {
-      whitespace: '#eaeaea',
-      lowercase: '#cecece',
-      uppercase: '#aaaaaa',
-      fullstop: '#848484',
-      comma: '#636363',
-      background: '#424242',
+      whitespace: '#fff',
+      lowercase: '#fff',
+      uppercase: '#fff',
+      fullstop: '#fff',
+      comma: '#fff',
+      background: '#fff',
+      // whitespace: '#eaeaea',
+      // lowercase: '#cecece',
+      // uppercase: '#aaaaaa',
+      // fullstop: '#848484',
+      // comma: '#636363',
+      // background: '#424242',
     },
   }
 
@@ -136,6 +142,7 @@ class Unit extends Component {
           color={this.state.color}
           blockW={this.state.blockW}
           blockH={this.state.blockH}
+          maxChar={this.state.maxChar}
         />
         <button 
           className="add round-btn btn icon" 

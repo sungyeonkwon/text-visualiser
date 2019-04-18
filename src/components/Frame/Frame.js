@@ -9,35 +9,46 @@ const charToType = (char) => {
   else if (char === char.toUpperCase()) { return 'uppercase'}
 }
 
-const setRotation = (n) => {
-  let result;
-  switch (n % 4) {
-    case 0:
-      result = "0deg"
+const setRotation = n => "rotate(" + n*90 + "deg"
+
+// get maxchar and linestr.length
+// get spaceCount
+// if left: do nothing
+// if center: "translate" x with value/2
+// if right: translate x with value
+const setAlignment = (blockW, maxChar, leng, align) => {
+  const spaceCount = maxChar - leng
+  let toMove;
+  switch (align){
+    case "left":
+      toMove = 0
       break;
-    case 1:
-      result = "90deg"
+    case "center":
+      toMove = blockW * spaceCount / 2
       break;
-    case 2:
-      result = "180deg"
-      break;
-    case 3:
-      result = "270deg"
+    case "right":
+      toMove = blockW * spaceCount
       break;
   }
-  // TODO
+  return "translate(" +  toMove + "px, 0px)"
 }
 
+
 const Frame = (props) => {
+
+  console.log("maxChar", props.maxChar)
 
   const allBlocks = () => {
     const blocks = props.textArr.map(line => {
       if (line == ''){
         return(
           <div
-          style={{ height: props.blockH }} 
+            style={{ height: props.blockH }} 
             className={`line-container`}>
-            <div className={`line ${props.align} ${props.shape}`}>
+            <div 
+              style={{ transform: setAlignment(props.blockW, props.maxChar, 1, props.align) }}
+              className={`line ${props.align} ${props.shape}`}
+            >
               <Block
                 color={props.color}
                 blockH={props.blockH}
@@ -49,11 +60,15 @@ const Frame = (props) => {
         )
       }
       const lineStr = typeof line === 'string'? line : line.join(' ')
+      console.log("lineStr", lineStr.length)
       return (
         <div 
-          style={{ height: props.blockH }}
-          className={`line-container`}>
-          <div className={`line ${props.align} ${props.shape}`}>
+        style={{ height: props.blockH }} 
+        className={`line-container`}>
+          <div 
+            style={{ transform: setAlignment(props.blockW, props.maxChar, lineStr.length, props.align) }}
+            className={`line ${props.align} ${props.shape}`}
+          >
             {lineStr.split('').map((char, i) => {
             return (<Block
               key={i}
@@ -74,9 +89,16 @@ const Frame = (props) => {
   return(
     <div 
       className="container-sqr frame"
-      style={{ backgroundColor: props.color.background}}
-    >
+      style={{ 
+        backgroundColor: props.color.background,
+       }}
+    > 
+      <div 
+        className="inner-container"
+        style={{ transform: setRotation(props.rotate) }}
+      >
       { allBlocks() }
+      </div>
     </div>
   )
 }

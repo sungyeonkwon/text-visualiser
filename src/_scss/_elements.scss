@@ -7,33 +7,33 @@
   height:60px;
   border-radius:50px;
   border:none;
-  transition: background-color 200ms linear;
+  transition: all 0.15s linear;
   @include breakpoint(mobile){
     top:calc(200vw - 25px);
     width:50px;
     height:50px;
   }
-
 }
 
 .round-btn.add:hover {
-  background-color:red;
+  background-color:$darkgrey;
+  transform:scale(1.14)
 }
 
 .btn-wrapper {
   transition: all 0.2s ease-in-out;
   width:100%;
   height:100%;
-  background:#ddd;
+  background: black;
   cursor:pointer;
-
+  color:white;
 }
 .btn-wrapper:hover {
-  background-color:#eee;
+  background-color:$grey;
 }
 
 .btn-wrapper.selected {
-  background-color:#eee;
+  background-color:$darkgrey;
 }
 
 .btn {
@@ -43,8 +43,8 @@
 }
 
 .btn-wrapper, .ColorSelector {
-  border-right:1px solid grey;
-  border-bottom:1px solid grey;
+  border-right:1px solid $grey;
+  border-bottom:1px solid $grey;
 }
 
 .btn.ctrl {
@@ -81,7 +81,7 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 85px 85px 0;
+  border-width: 0 92px 92px 0;
   border-color: transparent transparent transparent transparent;
   @include prefix(transition, all 0.3s ease);
 }
@@ -94,61 +94,78 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 85px 85px 0;
+  border-width: 0 100px 100px 0;
   border-color: transparent #000000 transparent transparent;
 }
 .btn.remove {
   z-index:5;
   position:absolute;
-  top:4px;
-  right:-81px;
-  width:40px;
-  height:40px;
+  top:0px;
+  right:-100px;
+  width:53px;
+  height:53px;
   background-image: url(../assets/i_remove.svg);
 }
 
 .btn.left {
   background-image: url(../assets/i_left.svg);
-  height: 96%;
-  margin-left: 6.2vw;
-  margin-top: 0.1vw;
+  height: 100%;
+  width: 100%;
+  background-position: center center;
+  display: inline-block;
+  margin: 0 auto;
+  background-size: 50%;
 }
 
 .btn.right {
   background-image: url(../assets/i_right.svg);
-  height: 96%;
-  margin-left: 5.7vw;
-  margin-top: 0.1vw;
+  height: 100%;
+  width: 100%;
+  background-position: center center;
+  display: inline-block;
+  margin: 0 auto;
+  background-size: 50%;
 }
 
 .btn.center {
   background-image: url(../assets/i_center.svg);
-  height: 96%;
-  margin-left: 5.8vw;
-  margin-top: 0.1vw;
+  height: 100%;
+  width: 100%;
+  background-position: center center;
+  display: inline-block;
+  margin: 0 auto;
+  background-size: 50%;
 }
 
 .btn.rect {
   background-image: url(../assets/i_rect.svg);
   height: 100%;
-  margin-left: 9.7vw;
-  margin-top: 0.03vw;
+  width: 100%;
+  background-position: center center;
+  display: inline-block;
+  margin: 0 auto;
+  background-size: 45%;
 }
 
 .btn.circle {
   background-image: url(../assets/i_circle.svg);
-  height: 98%;
-  margin-left: 9.7vw;
-  margin-top: 0.08vw;
+  height: 100%;
+  width: 100%;
+  background-position: center center;
+  display: inline-block;
+  margin: 0 auto;
+  background-size: 50%;
 }
 .ctrl-types {
   .whitespace, .fullstop, .background, .lowercase, .uppercase, .comma {
     text-transform: capitalize;
-    color: grey;
+    color: white;
     width: 100%;
     letter-spacing: 0.06rem;
     font-size:20px;
     margin-top: 9px;
+    margin-left: 10px;
+    text-align: left;
     @include breakpoint(mobile){
       font-size:14px;
     }
@@ -198,7 +215,7 @@
   width:14px;
   height:14px;
   display: inline-block;
-  margin-right:10px;
+  margin-right:15px;
 }
 
 .ctrl-types{
@@ -228,14 +245,19 @@
 }
 
 .Color:hover {
+  background-image: linear-gradient(135deg, rgba(0,0,0,0.3) 12.50%, transparent 12.50%, transparent 50%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.3) 62.50%, transparent 62.50%, transparent 100%);
+  background-size: 8.49px 8.49px;
+}
+
+.Color.selected {
   background-image: linear-gradient(135deg, #000000 12.50%, transparent 12.50%, transparent 50%, #000000 50%, #000000 62.50%, transparent 62.50%, transparent 100%);
-  background-size: 11.31px 11.31px;
+  background-size: 8.49px 8.49px;
+}
+.inner-container {
+  @include prefix(transition, all 0.4s ease-in-out);
+
 }
 
-.container-sqr.frame{
-  // transform: rotate(90deg);
-
-}
 .line {
   line-height:0em;
   margin:0;
@@ -267,30 +289,17 @@
 
 .Block {
   border-radius: 100px;
-  background-color: orange;
   display: inline-block;
+  border:1px solid black;
   width: 30px;
   height: 50px;
+  // filter:invert(100%);
   @include prefix(transition, all 0.4s ease-in-out);
 }
-.Block.uppercase {
-  background-color: brown;
+.Block.uppercase, .Block.lowercase, .Block.whitespace, .Block.fullstop, .Block.comma,.Block.return {
+  // border:none;
 }
-.Block.lowercase {
-  background-color: lightgreen;
-}
-.Block.whitespace {
-  background-color: white;
-}
-.Block.return {
-  background-color: grey;
-}
-.Block.fullstop {
-  background-color: red;
-}
-.Block.comma {
-  background-color: green;
-}
+
 .Block.rect{
   border-radius: 0px;
 }

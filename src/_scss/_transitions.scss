@@ -32,7 +32,7 @@
 // CONTROL
 
 .transition-control-enter {
-  opacity: 0.01;
+  opacity: 1;
 }
 
 .transition-control-enter.transition-control-enter-active {
@@ -41,7 +41,7 @@
 }
 
 .transition-control-leave {
-  opacity: 0.5;
+  opacity: 1;
   transform: translate(-50vw, 0px);
   @include breakpoint(mobile){
     transform: translate(-100vw, 0px);
@@ -49,7 +49,7 @@
 }
 
 .transition-control-appear {
-  opacity: 0.01;
+  opacity: 1;
   transform: translate(-50vw, 0px);
   @include breakpoint(mobile){
     transform: translate(-100vw, 0px);

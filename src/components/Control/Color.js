@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React from 'react'
 
 const Color = props => {
 
@@ -6,11 +6,12 @@ const Color = props => {
     props.callbackOnColorSelect(color)
   }
 
+  const selected = props.selectedColor === props.color? "selected" : "" 
   return(
     <div
       style={{ backgroundColor: props.color}} 
       onClick={(e) => selectColor(e, props.color)} 
-      className="Color" >
+      className={`Color ${selected}`} >
     </div>
   )
 }
