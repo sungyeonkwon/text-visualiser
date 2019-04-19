@@ -1,7 +1,7 @@
 html,
 body {
   scroll-behavior: smooth;
-  background-color:grey;
+  background-color:$bggrey;
   overflow-x:hidden;
   height:100vh;
   margin: 0;
@@ -9,6 +9,7 @@ body {
   font-size: 16px;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  
 }
 
 body {
@@ -50,9 +51,8 @@ li, ul {
   padding: 0;
 }
 
+// CUSTON SCROLLBAR
 
-
-/* custom scrollbar */
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
@@ -60,18 +60,20 @@ li, ul {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(120,120,120);
+  border: 1px solid $lightgrey;
+  background-color:white;
+
   /* background: #000000; */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,.6);
+  background: $lightgrey;
   transition: background-color 0.2s ease;
   /* background: rgba(255,255,255,.5); */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(80,80,80);
+  background: $grey;
 }

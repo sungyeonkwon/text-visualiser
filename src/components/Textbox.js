@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class Textbox extends Component {
+
   state = {
     value: this.props.poem.text.join('\n')
   }
@@ -11,9 +12,11 @@ class Textbox extends Component {
   }
 
   render(){
+    const clicked = this.props.showControl ? "clicked" : null
+
     return(
       <div className="container-sqr">
-        <button className="btn icon ctrl" onClick={(e) => this.props.callbackOnClick(e)}/>
+        <button className={`btn icon ctrl ${clicked}`} onClick={(e) => this.props.callbackOnClick(e)}/>
         <input 
           className="Textbox__title" type="text" 
           placeholder={this.props.poem.title}/>

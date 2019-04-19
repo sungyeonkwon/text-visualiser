@@ -1,7 +1,8 @@
+export const SCROLLBAR_W = 16;
 export const TYPE_OPTS = ['lowercase', 'uppercase', 'whitespace', 'fullstop', 'comma', 'background']
-export const ALIGN_OPTS = ['left', 'center', 'right', 'rotate']
+export const ALIGN_OPTS = ['left', 'center', 'spread', 'right', 'rotate']
 export const SHAPE_OPTS = ['circle', 'rect']
-export const COLOR_OPTS = ['#ff2c2c', '#f99900', '#c9f900', '#4caf50', '#0086ff', '#673ab7']
+export const COLOR_OPTS = ['#a36a17', '#f41e93', '#f4b400', '#00ad0c', '#0068ff', '#6933ef']
 export const POEMS = [
   {
     title: "Ping",

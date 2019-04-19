@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 
 const Block = (props) => {
 
+  const gradient = "linear-gradient(#fff, " + props.color[props.type] + ")";
+  console.log("gradient", gradient)
   return(
     <span 
-      className={`Block ${props.type}`}
+      className={`Block scale shake-lr ${props.type}`}
       style={{
-        backgroundColor: props.color[props.type],
+        background: gradient,
         width: props.blockW,
         height: props.blockH,
       }}
@@ -15,3 +17,4 @@ const Block = (props) => {
 }
 
 export default Block
+

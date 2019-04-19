@@ -3,12 +3,11 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import Textbox from './Textbox';
 import Frame from './Frame/Frame';
 import Control from './Control/Control';
-import { ALIGN_OPTS, SHAPE_OPTS, TYPE_OPTS } from '../constants/constants';
+import { ALIGN_OPTS, SHAPE_OPTS, SCROLLBAR_W } from '../constants/constants';
 
 class Unit extends Component {
 
   UnitRef = React.createRef();
-
   state = {
     showControl: false,
     text: '',
@@ -18,30 +17,24 @@ class Unit extends Component {
     blockH: 1,
     lineCount: 1,
     maxChar: 1,
-    align: 'center',
+    align: 'left',
     rotate: 0, // use modular value for 0,1,2,3 
     shape: 'circle',
     currType: 'lowercase',
     color: {
-      whitespace: '#fff',
-      lowercase: '#fff',
-      uppercase: '#fff',
-      fullstop: '#fff',
-      comma: '#fff',
-      background: '#fff',
-      // whitespace: '#eaeaea',
-      // lowercase: '#cecece',
-      // uppercase: '#aaaaaa',
-      // fullstop: '#848484',
-      // comma: '#636363',
-      // background: '#424242',
+      whitespace: '#cecece',
+      lowercase: '#cecece',
+      uppercase: '#cecece',
+      fullstop: '#cecece',
+      comma: '#cecece',
+      background: '#cecece',
     },
   }
 
   componentDidMount() {
     let window_w = this.UnitRef.current.clientWidth
     let edge;
-    window_w <= 750 ? edge = window_w : edge = window_w / 2
+    window_w <= 750 - SCROLLBAR_W ? edge = window_w : edge = window_w / 2
     this.setState({ edge });
     this.setState({ textArr: this.props.poem.text }, () => {
       this.getLineCount(this.props.poem.text)
@@ -54,10 +47,10 @@ class Unit extends Component {
     if (this.UnitRef.current){
       let window_w = this.UnitRef.current.clientWidth
       let edge;
-      window_w <= 750 ? edge = window_w : edge = window_w / 2
+      window_w <= 750 - SCROLLBAR_W ? edge = window_w : edge = window_w / 2
       this.setState({ edge }, () => {
-        this.setState({ blockH: this.state.edge / this.state.textArr.length}) // TODO: initial condition
-        this.setState({ blockW: this.state.edge / this.state.maxChar }) // TODO: initial condition
+        this.setState({ blockH: (this.state.edge / this.state.textArr.length)}) // TODO: initial condition
+        this.setState({ blockW: (this.state.edge / this.state.maxChar) }) // TODO: initial condition
       });
     }
   };
@@ -77,13 +70,13 @@ class Unit extends Component {
 
   getLineCount = textArr => {
     this.setState({lineCount: textArr.length }, () => {
-      this.setState({ blockH: this.state.edge / this.state.textArr.length}) // TODO: initial condition
+      this.setState({ blockH: (this.state.edge / this.state.textArr.length) }) // TODO: initial condition
     })
   }
 
   getMaxChar = textArr => {
     this.setState({ maxChar: Math.max(...textArr.map(line => line.toString().length)) }, () =>{
-      this.setState({ blockW: this.state.edge / this.state.maxChar }) // TODO: initial condition
+      this.setState({ blockW: (this.state.edge / this.state.maxChar) }) // TODO: initial condition
     })
   }
 
@@ -132,6 +125,7 @@ class Unit extends Component {
       <div className="Unit" ref={this.UnitRef}>
         <Textbox 
           poem={this.props.poem}
+          showControl={this.state.showControl}
           callbackOnClick={this.callbackOnClick} 
           callbackOnChange={this.callbackOnChange}/>
         <Frame 

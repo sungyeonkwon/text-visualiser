@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ColorSelector from './ColorSelector';
 import { ALIGN_OPTS, SHAPE_OPTS, TYPE_OPTS } from '../../constants/constants';
 
+// TODO: change it to functional comp
 class Control extends Component {
 
   createBtn = (cls, name=null) => {
@@ -33,7 +34,9 @@ class Control extends Component {
           style={{ backgroundColor: this.props.color[cls] }}
           className="current-color">
         </span>
-        {name}
+        <span className="current-color--name">
+          {name}
+        </span>
       </button>
       </div>
     )

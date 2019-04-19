@@ -30,7 +30,7 @@ const setAlignment = (blockW, maxChar, leng, align) => {
       toMove = blockW * spaceCount
       break;
   }
-  return "translate(" +  toMove + "px, 0px)"
+  return "translateX(" +  toMove + "px)"
 }
 
 
