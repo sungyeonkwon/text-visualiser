@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Textbox extends Component {
 
   state = {
-    placeholder: this.props.poem.text
+    placeholder: this.props.poem.text.join('\n')
   }
 
   onValueChange = (value) => {

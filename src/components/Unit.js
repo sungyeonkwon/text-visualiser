@@ -3,7 +3,9 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import Textbox from './Textbox';
 import Frame from './Frame/Frame';
 import Control from './Control/Control';
-import { ALIGN_OPTS, SHAPE_OPTS, SCROLLBAR_W } from '../constants/constants';
+import { ALIGN_OPTS, SHAPE_OPTS, SCROLLBAR_W, COLOR_OPTS } from '../constants/constants';
+
+const selectRandom = arr => arr[ Math.floor( Math.random() * arr.length ) ];
 
 class Unit extends Component {
 
@@ -17,17 +19,17 @@ class Unit extends Component {
     blockH: 1,
     lineCount: 1,
     maxChar: 1,
-    align: 'left',
+    align: 'spread',
     rotate: 0, // use modular value for 0,1,2,3 
     shape: 'circle',
-    currType: 'lowercase',
+    currType: 'background',
     color: {
-      background: '#0068ff',
-      lowercase: '#6933ef',
-      uppercase: '#a36a17',
-      fullstop: '#f41e93',
-      comma: '#f4b400',
-      whitespace: '#0068ff',
+      background: selectRandom(COLOR_OPTS),
+      lowercase: selectRandom(COLOR_OPTS),
+      uppercase: selectRandom(COLOR_OPTS),
+      fullstop: selectRandom(COLOR_OPTS),
+      comma: selectRandom(COLOR_OPTS),
+      whitespace: selectRandom(COLOR_OPTS),
     },
   }
 
