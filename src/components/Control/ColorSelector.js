@@ -13,13 +13,7 @@ class ColorSelector extends Component {
     this.props.callbackOnColorSelect([color, this.props.type])
   }
 
-  // we have type and color
-  // type comes from prop (current selected type)
-  // color comes from prop (current selected color for type)
-  // if curr selected color is the same as.. 
   render(){
-    console.log("this.props.type", this.props.type)
-    console.log("this.props.colors", this.props.color[this.props.type])
     let selectedColor = this.props.color[this.props.type]
     return(
       <div className="ColorSelector">

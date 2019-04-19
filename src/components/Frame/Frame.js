@@ -11,11 +11,6 @@ const charToType = (char) => {
 
 const setRotation = n => "rotate(" + n*90 + "deg"
 
-// get maxchar and linestr.length
-// get spaceCount
-// if left: do nothing
-// if center: "translate" x with value/2
-// if right: translate x with value
 const setAlignment = (blockW, maxChar, leng, align) => {
   const spaceCount = maxChar - leng
   let toMove;
@@ -29,14 +24,14 @@ const setAlignment = (blockW, maxChar, leng, align) => {
     case "right":
       toMove = blockW * spaceCount
       break;
+    case "spread":
+      toMove = 0
+      break;
   }
   return "translateX(" +  toMove + "px)"
 }
 
-
 const Frame = (props) => {
-
-  console.log("maxChar", props.maxChar)
 
   const allBlocks = () => {
     const blocks = props.textArr.map(line => {
@@ -60,7 +55,6 @@ const Frame = (props) => {
         )
       }
       const lineStr = typeof line === 'string'? line : line.join(' ')
-      console.log("lineStr", lineStr.length)
       return (
         <div 
         style={{ height: props.blockH }} 
@@ -69,15 +63,29 @@ const Frame = (props) => {
             style={{ transform: setAlignment(props.blockW, props.maxChar, lineStr.length, props.align) }}
             className={`line ${props.align} ${props.shape}`}
           >
-            {lineStr.split('').map((char, i) => {
-            return (<Block
-              key={i}
-              color={props.color}
-              blockH={props.blockH}
-              blockW={props.blockW}
-              type={charToType(char)}
-            />)
-          })}
+            { lineStr.split('').map((char, i) => {
+                      
+              let spaceCount = props.maxChar - lineStr.length;
+              let space;
+              let singleSpace;
+              if (props.edge > 1 && props.maxChar !== undefined && spaceCount !== 0 && props.maxChar > lineStr.length){
+                space = props.edge - props.blockW * lineStr.length
+                singleSpace = space / (lineStr.length - 1)
+              }
+
+              return (
+                <Block
+                  key={i}
+                  i={i}
+                  align={props.align}
+                  singleSpace={singleSpace}
+                  color={props.color}
+                  blockH={props.blockH}
+                  blockW={props.blockW}
+                  type={charToType(char)}
+                />
+              )
+            })}
         </div>
       </div>
       )

@@ -53,11 +53,11 @@ class App extends Component {
     return (
       <div className="unit-container">
         <CSSTransitionGroup
-        transitionName="transition-unit"
-        transitionAppear={true}
-        transitionAppearTimeout={300}
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={300}
+          transitionName="transition-unit"
+          transitionAppear={true}
+          transitionAppearTimeout={300}
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={300}
         >
           {units}
         </CSSTransitionGroup>

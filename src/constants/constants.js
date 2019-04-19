@@ -2,17 +2,17 @@ export const SCROLLBAR_W = 16;
 export const TYPE_OPTS = ['lowercase', 'uppercase', 'whitespace', 'fullstop', 'comma', 'background']
 export const ALIGN_OPTS = ['left', 'center', 'spread', 'right', 'rotate']
 export const SHAPE_OPTS = ['circle', 'rect']
-export const COLOR_OPTS = ['#a36a17', '#f41e93', '#f4b400', '#00ad0c', '#0068ff', '#6933ef']
+export const COLOR_OPTS = ['#0068ff', '#6933ef', '#a36a17', '#f41e93', '#f4b400', '#00ad0c',]
 export const POEMS = [
   {
-    title: "Ping",
+    title: "Placeholder Title",
     text: 
-    [["Go, Ping"],
+    [["Go, type"],
     [". . ."],
     [". ."],
     ["."],
     [""],
-    ["Pong!"]],
+    ["Here!"]],
   },
   {
     title: "Easter Wings",
@@ -40,12 +40,13 @@ export const POEMS = [
     ["Affliction shall advance the flight in me."]]
   },
   {
-    title: "Youtube comment",
+    title: "You fit into me",
     text:
-    [["depression = cured"],
-    ["edges = snatched"],
+    [["you fit into me"],
+    ["like a hook into an eye"],
     [""],
-    ["etc"]]
+    ["a fish hook"],
+    ["an open eye"]]
   },
   { 
     title: "The Rose Family",
@@ -62,19 +63,18 @@ export const POEMS = [
     ["But were always a rose."]]
   },
   {
+    title: "I comment",
+    text:
+    [["depression = cured"],
+    ["edges = snatched"],
+    [""],
+    ["etc"]]
+  },
+  {
     title: "In a Station of the Metro",
     text: 
     [["The apparition of these faces in the crowd:"],
     ["Petals on a wet, black bough."]]
-  },
-  {
-    title: "You fit into me",
-    text:
-    [["you fit into me"],
-    ["like a hook into an eye"],
-    [""],
-    ["a fish hook"],
-    ["an open eye"]]
   },
   {
     title: "Hymn to Aphrodite",

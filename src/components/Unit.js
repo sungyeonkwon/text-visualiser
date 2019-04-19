@@ -119,8 +119,6 @@ class Unit extends Component {
 
   render(){
     
-    console.log("unit state rotate", this.state.rotate)
-
     return(
       <div className="Unit" ref={this.UnitRef}>
         <Textbox 
@@ -129,6 +127,7 @@ class Unit extends Component {
           callbackOnClick={this.callbackOnClick} 
           callbackOnChange={this.callbackOnChange}/>
         <Frame 
+          edge={this.state.edge}
           textArr={this.state.textArr}
           align={this.state.align}
           shape={this.state.shape}

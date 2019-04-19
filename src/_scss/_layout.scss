@@ -59,6 +59,18 @@
   padding:10px 10px 10px 70px;
   font-size:28px;
   position:absolute;
-  color: black;
+  color: $darkgrey;
   z-index:3;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: $darkgrey;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $darkgrey;
+}
+
+::placeholder {
+  color: $darkgrey;
 }
