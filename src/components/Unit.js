@@ -3,7 +3,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import Textbox from './Textbox';
 import Frame from './Frame/Frame';
 import Control from './Control/Control';
-import { ALIGN_OPTS, SHAPE_OPTS, SCROLLBAR_W, COLOR_OPTS } from '../constants/constants';
+import { ALIGN_OPTS, SHAPE_OPTS, SCROLLBAR_W, COLOR_OPTS, TYPE_OPTS } from '../constants/constants';
 
 const selectRandom = arr => arr[ Math.floor( Math.random() * arr.length ) ];
 
@@ -19,9 +19,9 @@ class Unit extends Component {
     blockH: 1,
     lineCount: 1,
     maxChar: 1,
-    align: 'spread',
-    rotate: 0, // use modular value for 0,1,2,3 
-    shape: 'circle',
+    align: selectRandom(ALIGN_OPTS),
+    rotate: 0,
+    shape: selectRandom(SHAPE_OPTS),
     currType: 'background',
     color: {
       background: selectRandom(COLOR_OPTS),
@@ -51,8 +51,8 @@ class Unit extends Component {
       let edge;
       window_w <= 750 - SCROLLBAR_W ? edge = window_w : edge = window_w / 2
       this.setState({ edge }, () => {
-        this.setState({ blockH: (this.state.edge / this.state.textArr.length)}) // TODO: initial condition
-        this.setState({ blockW: (this.state.edge / this.state.maxChar) }) // TODO: initial condition
+        this.setState({ blockH: (this.state.edge / this.state.textArr.length)})
+        this.setState({ blockW: (this.state.edge / this.state.maxChar) })
       });
     }
   };
@@ -72,13 +72,13 @@ class Unit extends Component {
 
   getLineCount = textArr => {
     this.setState({lineCount: textArr.length }, () => {
-      this.setState({ blockH: (this.state.edge / this.state.textArr.length) }) // TODO: initial condition
+      this.setState({ blockH: (this.state.edge / this.state.textArr.length) })
     })
   }
 
   getMaxChar = textArr => {
     this.setState({ maxChar: Math.max(...textArr.map(line => line.toString().length)) }, () =>{
-      this.setState({ blockW: (this.state.edge / this.state.maxChar) }) // TODO: initial condition
+      this.setState({ blockW: (this.state.edge / this.state.maxChar) })
     })
   }
 

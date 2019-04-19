@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 const Block = (props) => {
 
   const gradient = "linear-gradient(#fff, " + props.color[props.type] + ")";
-  
-  console.log("@@@spread singleSpace", props.singleSpace)
-  console.log("@@@spread I", props.i)
-
   const spread = props.align === 'spread' ? props.singleSpace * props.i : 0
   
   return(
