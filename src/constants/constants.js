@@ -1,5 +1,5 @@
 export const SCROLLBAR_W = 16;
-export const TYPE_OPTS = ['lowercase', 'uppercase', 'whitespace', 'fullstop', 'comma', 'background']
+export const TYPE_OPTS = ['background', 'lowercase', 'uppercase', 'whitespace', 'fullstop', 'comma']
 export const ALIGN_OPTS = ['left', 'center', 'spread', 'right', 'rotate']
 export const SHAPE_OPTS = ['circle', 'rect']
 export const COLOR_OPTS = ['#0068ff', '#6933ef', '#a36a17', '#f41e93', '#f4b400', '#00ad0c',]

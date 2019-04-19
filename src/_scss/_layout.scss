@@ -47,6 +47,9 @@
   border:none;
   white-space: pre-wrap;
   color:$darkgrey;
+  @include breakpoint(mobile){
+    font-size:20px;
+  }
 }
 
 .Textbox__title {
@@ -61,6 +64,10 @@
   position:absolute;
   color: $darkgrey;
   z-index:3;
+  @include breakpoint(mobile){
+    font-size:20px;
+    padding:10px 10px 10px 50px;
+  }
 }
 
 ::-webkit-input-placeholder { /* Edge */

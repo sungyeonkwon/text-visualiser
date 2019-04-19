@@ -22,12 +22,12 @@ class Unit extends Component {
     shape: 'circle',
     currType: 'lowercase',
     color: {
-      whitespace: '#cecece',
-      lowercase: '#cecece',
-      uppercase: '#cecece',
-      fullstop: '#cecece',
-      comma: '#cecece',
-      background: '#cecece',
+      background: '#0068ff',
+      lowercase: '#6933ef',
+      uppercase: '#a36a17',
+      fullstop: '#f41e93',
+      comma: '#f4b400',
+      whitespace: '#0068ff',
     },
   }
 

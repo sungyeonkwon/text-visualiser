@@ -65,6 +65,10 @@
   z-index:5;
   background-image: url(../assets/i_ctrl.svg);
   @include prefix(transition, all 0.3s ease);
+  @include breakpoint(mobile){
+    width: 35px;
+    height: 35px;  
+  }
 }
 
 .btn:hover {
@@ -79,13 +83,6 @@
 .btn.ctrl.clicked {
   transform:rotate(90deg);
   opacity:1;
-  left: 5px;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 6px;
-  z-index:5;
   background-image: url(../assets/i_close.svg);
 }
 
@@ -120,6 +117,9 @@
     @include prefix(transition, all 0.3s ease);
   }
   @include prefix(transition, all 0.3s ease);
+  @include breakpoint(mobile){
+    top:100vw;
+  }
 }
 .remove-container:hover {
   opacity:1;
@@ -132,6 +132,9 @@
     margin-top:20px;
     margin-right:20px;
     @include prefix(transition, all 0.3s ease);
+  }
+  @include breakpoint(mobile){
+    top:100vw;
   }
 }
 
@@ -260,6 +263,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  @include breakpoint(mobile){
+    width: calc(100vw - 16px)
+  }
 }
 .ctrl-wrapper--align, .ctrl-wrapper--shape, .ctrl-wrapper--color {
   width:100%;
@@ -299,13 +305,23 @@
   height:25px;
   display: inline-block;
   margin-right:15px;
+  @include breakpoint(desktop){
+    width:20px;
+    height:20px;
+  }
+    @include breakpoint(tablet){
+    width:16px;
+    height:16px;
+  }
 }
 
 .current-color--name {
   font-size:20px;
   @include breakpoint(smalldesktop){
     font-size:18px;
-
+  }
+  @include breakpoint(mobile){
+    font-size:15px;
   }
 }
 .ctrl-colors{
@@ -326,17 +342,24 @@
   height:100%;
   cursor:pointer;
   @include prefix(transition, background-image 0.3s linear);
-
 }
 
 .Color:hover {
   background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 4.55%, transparent 4.55%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 54.55%, transparent 54.55%, transparent 100%);
   background-size: 15.56px 15.56px;
+  @include breakpoint(mobile){
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 8.33%, transparent 8.33%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 58.33%, transparent 58.33%, transparent 100%);
+    background-size: 8.49px 8.49px;
+  }
 }
 
 .Color.selected {
   background-image: linear-gradient(135deg, #fff 4.55%, transparent 4.55%, transparent 50%, #fff 50%, #fff 54.55%, transparent 54.55%, transparent 100%);
   background-size: 15.56px 15.56px;
+  @include breakpoint(mobile){
+    background-image: linear-gradient(135deg, #fff 8.33%, transparent 8.33%, transparent 50%, #fff 50%, #fff 58.33%, transparent 58.33%, transparent 100%);
+    background-size: 8.49px 8.49px;
+  }
 }
 
 .inner-container {
@@ -377,8 +400,6 @@
   height: 50px;
   transition: all 0.4s ease-in-out;
   transition-property: border-radius, transform;
-  // @include prefix(transition, border-radius 0.4s ease-in-out);
-  // @include prefix(transition, transform 0.4s ease-in-out);
 }
 
 .Block.rect{
