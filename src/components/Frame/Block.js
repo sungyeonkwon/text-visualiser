@@ -11,7 +11,7 @@ const Block = (props) => {
   
   return(
     <span 
-      className={`Block shake-lr ${props.type}`}
+      className={`Block ${props.type}`}
       style={{
         background: gradient,
         width: props.blockW,

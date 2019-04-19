@@ -7,12 +7,12 @@ export const POEMS = [
   {
     title: "Placeholder Title",
     text: 
-    [["Go, type"],
-    [". . ."],
-    [". ."],
-    ["."],
+    [["Type,"],
+    ["Adjust,"],
+    ["Change colours"],
     [""],
-    ["Here!"]],
+    [""],
+    ["Here."]],
   },
   {
     title: "Easter Wings",
