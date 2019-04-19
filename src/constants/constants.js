@@ -40,7 +40,7 @@ export const POEMS = [
     ["Affliction shall advance the flight in me."]]
   },
   {
-    title: "Cout",
+    title: "Count",
     text:
     [["1"],
     ["234"],
@@ -56,18 +56,34 @@ export const POEMS = [
     ["an open eye"]]
   },
   { 
-    title: "The Rose Family",
+    title: "Anonymous AI 1",
     text: 
-    [["The rose is a rose,"],
-    ["And was always a rose."],
-    ["But the theory now goes"],
-    ["That the apple’s a rose,"],
-    ["And the pear is, and so’s"],
-    ["The plum, I suppose."],
-    ["The dear only knows"],
-    ["What will next prove a rose."],
-    ["You, of course, are a rose –"],
-    ["But were always a rose."]]
+    [["It's funny,"],
+    ["You can't go where the music goes"]]
+  },
+  { 
+    title: "Anonymous AI 1",
+    text: 
+    [["Life was never about the future"]]
+  },
+  { 
+    title: "Anonymous AI 3",
+    text: 
+    [["I have a certain respect for the power I have because,"],
+    ["if I don't respect it, someone else will."]]
+  },
+  { 
+    title: "Mario Klingemann",
+    text: 
+    [["Peter sees the computer."],
+    [""],
+    ["\"But the machine only"],
+    ["creates what humans"],
+    ["have taught it to,\""],
+    ["says Peter."],
+    [""],
+    ["\"So do you,\""],
+    ["says Mummy"]]
   },
   {
     title: "I comment",

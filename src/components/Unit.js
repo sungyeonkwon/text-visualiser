@@ -120,7 +120,7 @@ class Unit extends Component {
   }
 
   render(){
-    
+    const transitionClass = !this.state.showControl ? "transition-control-leave" : ""
     return(
       <div className="Unit" ref={this.UnitRef}>
         <Textbox 
@@ -151,7 +151,6 @@ class Unit extends Component {
             className="remove btn icon" 
           />
         </div>
-
         <CSSTransitionGroup
           transitionName="transition-control"
           transitionAppear={true}
@@ -159,20 +158,9 @@ class Unit extends Component {
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}
         >
-        { this.state.showControl ? 
-          <Control 
-            currType={this.state.currType}
-            callbackOnBtn={this.callbackOnBtn} 
-            callbackOnBtnType={this.callbackOnBtnType}
-            color={this.state.color}
-            callbackOnColorSelect={this.setColorType}
-            align={this.state.align}
-            shape={this.state.shape}
-          />
-         :
          <Control 
           color={this.state.color}
-          addClassToControl="transition-control-leave"
+          addClassToControl={transitionClass}
           currType={this.state.currType}
           callbackOnBtn={this.callbackOnBtn} 
           callbackOnBtnType={this.callbackOnBtnType}
@@ -180,8 +168,7 @@ class Unit extends Component {
           align={this.state.align}
           shape={this.state.shape}
         />
-         }
-         </CSSTransitionGroup>
+        </CSSTransitionGroup>
       </div>
     )
   }
