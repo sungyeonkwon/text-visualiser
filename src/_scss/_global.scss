@@ -50,29 +50,21 @@ li, ul {
   padding: 0;
 }
 
-// CUSTON SCROLLBAR
-
-/* width */
+// CUSTOM SCROLLBAR
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 16px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   border: 1px solid $lightgrey;
   background-color:white;
-
-  /* background: #000000; */
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: $lightgrey;
   transition: background-color 0.2s ease;
-  /* background: rgba(255,255,255,.5); */
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $grey;
 }

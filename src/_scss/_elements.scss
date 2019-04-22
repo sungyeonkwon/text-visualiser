@@ -9,7 +9,7 @@
   border:none;
   transition: all 0.15s linear;
   @include breakpoint(mobile){
-    top:calc(200vw - 25px);
+    top:calc(200vw - 57px);
     width:50px;
     height:50px;
   }
@@ -51,12 +51,9 @@
   border-bottom:1px solid $lightgrey;
 }
 
-.ColorSelector {
-  // border-right:1px solid $lightgrey;
-  border-bottom:1px solid $lightgrey;
-}
+
 .btn.ctrl {
-  left: 5px;
+  left: 10px;
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -74,12 +71,15 @@
 .btn:hover {
   opacity:1;
 }
+
 .btn.ctrl:hover{
   opacity:0.5; 
 }
+
 .btn.ctrl.clicked:hover{
   opacity:0.5; 
 }
+
 .btn.ctrl.clicked {
   transform:rotate(90deg);
   opacity:1;
@@ -97,6 +97,7 @@
   z-index: 99999;
   opacity:1;
 }
+
 .remove-container {
   cursor:pointer;
   opacity:0;
@@ -115,10 +116,13 @@
     float:right;
     background-image: url(../assets/i_remove.svg);
     @include prefix(transition, all 0.3s ease);
+    @include breakpoint(mobile){
+      width:34px;
+    }
   }
   @include prefix(transition, all 0.3s ease);
   @include breakpoint(mobile){
-    top:100vw;
+    top: calc(100vw - 16px);
   }
 }
 .remove-container:hover {
@@ -133,12 +137,7 @@
     margin-right:20px;
     @include prefix(transition, all 0.3s ease);
   }
-  @include breakpoint(mobile){
-    top:100vw;
-  }
 }
-
-
 
 .btn.left {
   background-image: url(../assets/i_left.svg);
@@ -169,7 +168,6 @@
   margin: 0 auto;
   background-size: 55%;
 }
-
 
 .btn.center {
   background-image: url(../assets/i_center.svg);
@@ -210,13 +208,13 @@
   margin: 0 auto;
   background-size: 50%;
 }
+
 .ctrl-types {
   width:50%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-
   .btn-wrapper{
     display: flex;
     flex-direction: column;
@@ -228,11 +226,12 @@
   }
 
   .whitespace, .fullstop, .background, .lowercase, .uppercase, .comma {
-    font-family: 'Varela Round', sans-serif !important;
-    text-transform: capitalize;
+    font-family: 'Nunito', sans-serif !important;
+    text-transform: uppercase;
     color: $darkgrey;
     width: 100%;
     letter-spacing: 0.03rem;
+    font-weight:700;
     font-size:24px;
     margin-left: 10px;
     text-align: left;
@@ -248,15 +247,17 @@
   left:0px;
   top:50px;
   height:calc(100% - 49px);
-  width:calc(50vw - 7px);
+  width:calc(50vw - 8px);
 	@include prefix(transition, all 0.3s ease);
   @include breakpoint(mobile){
-    width:calc(100vw - 7px);
-    height:calc(100vw - 50px);
+    width:calc(100vw - 8px);
+    height:calc(100vw - 66px);
   }
 }
+
 .ctrl-overlay {
   width:100%;
+  background-color: $lightgrey;
   height:100%;
   height:100%;
   display: flex;
@@ -267,6 +268,7 @@
     width: calc(100vw - 16px)
   }
 }
+
 .ctrl-wrapper--align, .ctrl-wrapper--shape, .ctrl-wrapper--color {
   width:100%;
   display: flex;
@@ -312,29 +314,37 @@
     @include breakpoint(tablet){
     width:16px;
     height:16px;
+    margin-right:10px;
+
   }
 }
 
 .current-color--name {
   font-size:20px;
   @include breakpoint(smalldesktop){
-    font-size:18px;
+    font-size: 16px;
+    margin-top: 3px;
   }
   @include breakpoint(mobile){
-    font-size:15px;
+    font-size:14px;
+  }
+  @include breakpoint(smallmobile){
+    font-size:13px;
   }
 }
+
 .ctrl-colors{
-  width:50%;
+  width: 49.7%;
 }
 
 .ColorSelector {
   display: flex;
   margin: 0;
   padding: 0;
-  flex-flow: row wrap;
+  flex-flow: row;
   box-sizing: border-box;
   height:100%;
+  border-bottom:1px solid $lightgrey;
 }
 
 .Color{
@@ -345,21 +355,13 @@
 }
 
 .Color:hover {
-  background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 4.55%, transparent 4.55%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 54.55%, transparent 54.55%, transparent 100%);
-  background-size: 15.56px 15.56px;
-  @include breakpoint(mobile){
-    background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 8.33%, transparent 8.33%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 58.33%, transparent 58.33%, transparent 100%);
-    background-size: 8.49px 8.49px;
-  }
+  background-image: linear-gradient(135deg, rgba(255,255,255,0.5) 8.33%, transparent 8.33%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 58.33%, transparent 58.33%, transparent 100%);
+  background-size: 8.49px 8.49px;
 }
 
 .Color.selected {
-  background-image: linear-gradient(135deg, #fff 4.55%, transparent 4.55%, transparent 50%, #fff 50%, #fff 54.55%, transparent 54.55%, transparent 100%);
-  background-size: 15.56px 15.56px;
-  @include breakpoint(mobile){
-    background-image: linear-gradient(135deg, #fff 8.33%, transparent 8.33%, transparent 50%, #fff 50%, #fff 58.33%, transparent 58.33%, transparent 100%);
-    background-size: 8.49px 8.49px;
-  }
+  background-image: linear-gradient(135deg, #fff 8.33%, transparent 8.33%, transparent 50%, #fff 50%, #fff 58.33%, transparent 58.33%, transparent 100%);
+  background-size: 8.49px 8.49px;
 }
 
 .inner-container {
@@ -395,6 +397,7 @@
 }
 
 .Block {
+  background-color: $lightgrey;
   display: inline-block;
   width: 30px;
   height: 50px;
@@ -405,6 +408,11 @@
 .Block.rect{
   border-radius: 0px;
 }
+
+.Block.return{
+  display:none;
+}
+
 .Block.circle{
   border-radius: 500px;
 }

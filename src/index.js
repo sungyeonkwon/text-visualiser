@@ -8,26 +8,33 @@ import './_scss/main.scss';
 class App extends Component {
 
   state = {
-    unitSequence: [0],
+    unitSequence: ['u0'],
+    recentlyAddedUnitKey: 'u0',
+  }
+  
+  componentDidUpdate() {
+    this.scrollToBottom(this.state.recentlyAddedUnitKey)
   }
 
-  // TODO: use library
-  generateKey = () => {
-    let key;
-    do { key = parseInt(Math.random() * 1000);
-    } while (this.state.unitSequence.includes(key));
-    return key;
-  };
+  scrollToBottom = (unitKey) => {
+    document.querySelector('.' + unitKey).scrollIntoView({ behavior: 'smooth' })
+  }
+
+  generateKey = () => 'unit' + Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
 
   callbackOnAddUnit = (unitKey) =>{
     let unitSequence = this.state.unitSequence.slice();
     let i = unitSequence.indexOf(unitKey);
+    let newUnitKey = this.generateKey()
     this.setState({
+      recentlyAddedUnitKey: newUnitKey,
       unitSequence: [
         ...unitSequence.slice(0, i + 1),
-        this.generateKey(),
+        newUnitKey,
         ...unitSequence.slice(i + 1, unitSequence.length)
       ]
+    }, () => {
+      this.scrollToBottom(this.state.recentlyAddedUnitKey)
     });
   }
 
@@ -40,6 +47,7 @@ class App extends Component {
 
   render(){
     const units = this.state.unitSequence.map((unit, i) => {
+
       return(
           <Unit
             poem={POEMS[i % POEMS.length]}

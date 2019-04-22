@@ -20,8 +20,8 @@
   background-color:red;
   z-index:3;
   @include breakpoint(mobile){
-    width:100%;
-    height:100vw;
+    width:calc(100vw - 16px);
+    height:calc(100vw - 16px);
   }
 }
 
@@ -35,8 +35,9 @@
 
 .Textbox {
   resize: none;
-  padding: 65px 10px 15px 10px;
-  font-family: 'Varela Round', sans-serif !important;
+  padding: 65px 15px 15px 15px;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight:600;
   font-size:28px;
   line-height:1.5em;
   width: 100%;
@@ -53,13 +54,14 @@
 }
 
 .Textbox__title {
-  font-family: 'Varela Round', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight:600;
   background: white;
   border:none;
   border-bottom:1px solid $lightgrey;
   height:50px;
   width:100%;
-  padding:10px 10px 10px 70px;
+  padding:11px 10px 8px 70px;
   font-size:28px;
   position:absolute;
   color: $darkgrey;

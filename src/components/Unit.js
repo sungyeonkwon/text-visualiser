@@ -3,7 +3,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import Textbox from './Textbox';
 import Frame from './Frame/Frame';
 import Control from './Control/Control';
-import { ALIGN_OPTS, SHAPE_OPTS, SCROLLBAR_W, COLOR_OPTS, TYPE_OPTS } from '../constants/constants';
+import { ALIGN_OPTS, SHAPE_OPTS, SCROLLBAR_W, COLOR_OPTS } from '../constants/constants';
 
 const selectRandom = arr => arr[ Math.floor( Math.random() * arr.length ) ];
 
@@ -11,9 +11,11 @@ class Unit extends Component {
 
   UnitRef = React.createRef();
   state = {
+    unitKey: this.props.unitKey,
     showControl: false,
     text: '',
     textArr: ['0'],
+    isMobile: false,
     edge: 1,
     blockW: 1,
     blockH: 1,
@@ -36,9 +38,14 @@ class Unit extends Component {
   componentDidMount() {
     let window_w = this.UnitRef.current.clientWidth
     let edge;
-    window_w <= 750 - SCROLLBAR_W ? edge = window_w : edge = window_w / 2
-    this.setState({ edge });
-    this.setState({ textArr: this.props.poem.text }, () => {
+    let isMobile = false;
+    if (window_w <= 750 - SCROLLBAR_W) {
+      edge = window_w
+      isMobile = true;
+    } else {
+      edge = window_w / 2
+    }
+    this.setState({ edge: edge, textArr: this.props.poem.text, isMobile: isMobile }, () => {
       this.getLineCount(this.props.poem.text)
       this.getMaxChar(this.props.poem.text)
     })
@@ -51,8 +58,10 @@ class Unit extends Component {
       let edge;
       window_w <= 750 - SCROLLBAR_W ? edge = window_w : edge = window_w / 2
       this.setState({ edge }, () => {
-        this.setState({ blockH: (this.state.edge / this.state.textArr.length)})
-        this.setState({ blockW: (this.state.edge / this.state.maxChar) })
+        this.setState({ 
+          blockH: this.state.edge / this.state.textArr.length,
+          blockW: this.state.edge / this.state.maxChar
+        })
       });
     }
   };
@@ -72,13 +81,13 @@ class Unit extends Component {
 
   getLineCount = textArr => {
     this.setState({lineCount: textArr.length }, () => {
-      this.setState({ blockH: (this.state.edge / this.state.textArr.length) })
+      this.setState({ blockH: this.state.edge / this.state.textArr.length })
     })
   }
 
   getMaxChar = textArr => {
     this.setState({ maxChar: Math.max(...textArr.map(line => line.toString().length)) }, () =>{
-      this.setState({ blockW: (this.state.edge / this.state.maxChar) })
+      this.setState({ blockW: this.state.edge / this.state.maxChar })
     })
   }
 
@@ -122,7 +131,7 @@ class Unit extends Component {
   render(){
     const transitionClass = !this.state.showControl ? "transition-control-leave" : ""
     return(
-      <div className="Unit" ref={this.UnitRef}>
+      <div className={`Unit ${this.props.unitKey}`} ref={this.UnitRef} >
         <Textbox 
           poem={this.props.poem}
           showControl={this.state.showControl}

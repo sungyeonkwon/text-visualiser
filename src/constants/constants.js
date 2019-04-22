@@ -2,7 +2,7 @@ export const SCROLLBAR_W = 16;
 export const TYPE_OPTS = ['background', 'lowercase', 'uppercase', 'whitespace', 'fullstop', 'comma']
 export const ALIGN_OPTS = ['left', 'center', 'spread', 'right', 'rotate']
 export const SHAPE_OPTS = ['circle', 'rect']
-export const COLOR_OPTS = ['#f73e96', '#f2e038', '#1aad47', '#5ab1f2', '#863ef7', '#6b6b6b',]
+export const COLOR_OPTS = ['#863ef7', '#f73e96', '#f2e038', '#1aad47', '#0040ff', '#6b6b6b']
 export const POEMS = [
   {
     title: "Placeholder Title",
