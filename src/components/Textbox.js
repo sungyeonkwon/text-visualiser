@@ -3,12 +3,16 @@ import React, { Component } from 'react';
 class Textbox extends Component {
 
   state = {
-    placeholder: this.props.poem.text.join('\n')
+    value: this.props.poem.text.join('\n')
   }
 
   onValueChange = (value) => {
     this.setState({ value })
     this.props.callbackOnChange(value)
+  }
+
+  onFocus = () => {
+    this.setState({ value: "" })
   }
 
   render(){
@@ -21,10 +25,11 @@ class Textbox extends Component {
           className="Textbox__title" type="text" 
           placeholder={this.props.poem.title}/>
         <textarea
-          placeholder={this.state.placeholder}
+          value={ this.state.value }
           onChange={(e) => this.onValueChange(e.target.value)}
+          onFocus={(e) => this.onFocus()}
           className="Textbox"
-          autoFocus>
+        >
         </textarea>
       </div>
     )
